@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEPosVendas", "GEPosVendas\GEPosVendas.csproj", "{7B713F15-8093-4331-A199-2E932D2C3772}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEPV.Domain", "GEPV.Domain\GEPV.Domain.csproj", "{56CD07CA-6D88-4BBA-BA02-3FDDFFA53013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEPV.IoC", "GEPV.IoC\GEPV.IoC.csproj", "{44DA8274-1AA1-404F-913D-E8041557D5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7B713F15-8093-4331-A199-2E932D2C3772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B713F15-8093-4331-A199-2E932D2C3772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B713F15-8093-4331-A199-2E932D2C3772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56CD07CA-6D88-4BBA-BA02-3FDDFFA53013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56CD07CA-6D88-4BBA-BA02-3FDDFFA53013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56CD07CA-6D88-4BBA-BA02-3FDDFFA53013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56CD07CA-6D88-4BBA-BA02-3FDDFFA53013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44DA8274-1AA1-404F-913D-E8041557D5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44DA8274-1AA1-404F-913D-E8041557D5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44DA8274-1AA1-404F-913D-E8041557D5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44DA8274-1AA1-404F-913D-E8041557D5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
