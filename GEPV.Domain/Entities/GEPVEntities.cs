@@ -12,21 +12,21 @@ namespace GEPV.Domain.Entities
         {
         }
 
-        public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<Comprador> Comprador { get; set; }
-        public DbSet<Contatos> Contatos { get; set; }
-        public DbSet<EnderecoCliente> EnderecoCliente { get; set; }
-        public DbSet<Fornecedor> Fornecedor { get; set; }
-        public DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Comprador> Comprador { get; set; }
+        public virtual DbSet<Contatos> Contatos { get; set; }        
+        public virtual DbSet<Fornecedor> Fornecedor { get; set; }        
+        public virtual DbSet<Estado> Estado { get; set; }
+        public virtual DbSet<Regiao> Regiao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>();
             modelBuilder.Entity<Comprador>();
-            modelBuilder.Entity<Contatos>();
-            modelBuilder.Entity<EnderecoCliente>();
+            modelBuilder.Entity<Contatos>();            
             modelBuilder.Entity<Fornecedor>();
-            modelBuilder.Entity<Usuario>();
+            modelBuilder.Entity<Estado>();
+            modelBuilder.Entity<Regiao>();
             
             base.OnModelCreating(modelBuilder);
         }

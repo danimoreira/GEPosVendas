@@ -13,7 +13,7 @@ namespace GEPV.Domain.Entities
     {
         public Comprador()
         {
-            Usuario = new Usuario();
+            
         }
         [Column("ID")]
         [Key]
@@ -23,10 +23,10 @@ namespace GEPV.Domain.Entities
         [Column("DATA_NASCIMENTO")]
         public DateTime? DataNascimento { get; set; }
         [Column("EMAIL")]
-        public string Email { get; set; }
-        [Column("ID_USUARIO")]
-        [ForeignKey("Usuario")]
-        public int IdUsuario { get; set; }
-        public virtual Usuario Usuario { get; set; }        
+        public string Email { get; set; }        
+        [Column("USUARIO")]
+        public string Login { get; set; }
+        [Column("SENHA")]
+        public string Senha { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace GEPV.Domain.Entities
     {
         public Cliente()
         {
-            Enderecos = new List<EnderecoCliente>();
+            
         }
 
         [Column("ID")]
@@ -37,6 +37,26 @@ namespace GEPV.Domain.Entities
         public string EmailNFe { get; set; }
         [Column("OBSERVACAO")]
         public string Observacao { get; set; }
-        public virtual List<EnderecoCliente> Enderecos { get; set; }
+        [Column("LOGRADOURO")]
+        public string Logradouro { get; set; }
+        [Column("NUMERO")]
+        public string Numero { get; set; }
+        [Column("BAIRRO")]
+        public string Bairro { get; set; }
+        [Column("CEP")]
+        public string Cep { get; set; }
+        [Column("CIDADE")]
+        public string Cidade { get; set; }
+
+        [Column("ID_ESTADO")]
+        [ForeignKey("Estado")]
+        public int IdEstado { get; set; }
+        public virtual Estado Estado { get; set; }
+
+        [Column("ID_REGIAO")]
+        [ForeignKey("Regiao")]
+        public int IdRegiao { get; set; }
+        public virtual Regiao Regiao { get; set; }
+
     }
 }

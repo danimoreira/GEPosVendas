@@ -1,5 +1,6 @@
 ﻿using GEPV.Domain.DTO;
 using GEPV.Domain.Interfaces.Services;
+using GEPV.Domain.Repository;
 using GEPV.Domain.Services;
 using Ninject;
 using System;
@@ -12,8 +13,10 @@ namespace GEPosVendas.Controllers
 {
     public class LoginController : Controller
     {
-        [Inject]
-        public ILoginService Service { get; set; }
+        //[Inject]
+        //public ILoginService Service { get; set; }
+
+        private LoginService Service = new LoginService(new LoginRepository());
 
         // GET: Login
         public ActionResult Index()

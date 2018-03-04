@@ -11,7 +11,7 @@ using GEPV.Domain.Interfaces.Services;
 
 namespace GEPV.Domain.Services
 {
-    public class LoginService : ServiceBase<Usuario>, ILoginService
+    public class LoginService : ServiceBase<Comprador>, ILoginService
     {
         private ILoginRepository _repository { get; set; }
 
@@ -20,7 +20,7 @@ namespace GEPV.Domain.Services
             _repository = repository;
         }
 
-        public Usuario Logar(LoginDto dados)
+        public Comprador Logar(LoginDto dados)
         {
            return _repository.List().Where(x => x.Login == dados.Usuario && x.Senha == dados.Senha).FirstOrDefault();            
         }

@@ -1,4 +1,8 @@
 ﻿using GEPV.Domain.Entities;
+using GEPV.Domain.Interfaces.Services;
+using GEPV.Domain.Repository;
+using GEPV.Domain.Services;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +13,20 @@ namespace GEPosVendas.Controllers
 {
     public class FornecedorController : Controller
     {
+        private FornecedorService Service = new FornecedorService(new FornecedorRepository());
+
         // GET: Fornecedor
         public ActionResult Index()
         {
-            return View(new Fornecedor());
+            List<Fornecedor> fornecedores = Service.List();
+            return View(fornecedores);
         }
 
         // GET: Fornecedor/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
+            return View(fornecedor);
         }
 
         // GET: Fornecedor/Create
@@ -34,6 +42,13 @@ namespace GEPosVendas.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Fornecedor fornecedor = new Fornecedor();
+
+                fornecedor.NomeFantasia = collection["NOME_FANTASIA"];
+                fornecedor.Sigla = collection["Sigla"];
+                fornecedor.Observacao = collection["Observacao"];
+
+                Service.Add(fornecedor);
 
                 return RedirectToAction("Index");
             }
@@ -46,7 +61,8 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
+            return View(fornecedor);
         }
 
         // POST: Fornecedor/Edit/5
@@ -56,6 +72,14 @@ namespace GEPosVendas.Controllers
             try
             {
                 // TODO: Add update logic here
+                Fornecedor fornecedor = new Fornecedor();
+
+                fornecedor.Id = id;
+                fornecedor.NomeFantasia = collection["NOME_FANTASIA"];
+                fornecedor.Sigla = collection["Sigla"];
+                fornecedor.Observacao = collection["Observacao"];
+
+                Service.Update(fornecedor);
 
                 return RedirectToAction("Index");
             }
@@ -68,7 +92,8 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
+            return View(fornecedor);
         }
 
         // POST: Fornecedor/Delete/5
@@ -78,6 +103,9 @@ namespace GEPosVendas.Controllers
             try
             {
                 // TODO: Add delete logic here
+                Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
+
+                Service.Delete(fornecedor);
 
                 return RedirectToAction("Index");
             }

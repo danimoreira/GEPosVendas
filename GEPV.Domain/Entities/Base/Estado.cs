@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Entities
 {
-    [Table("USUARIO")]
-    public class Usuario
+    [Table("ESTADO")]
+    public class Estado
     {
         [Column("ID")]
         [Key]
-        public int Id { get; set; }
-        [Column("USUARIO")]
-        public string Login { get; set; }
-        [Column("SENHA")]
-        public string Senha { get; set; }
+        public int MyProperty { get; set; }
+        [Column("DESCRICAO")]
+        public string Descricao { get; set; }
+        [Column("SIGLA")]
+        public string Sigla { get; set; }
     }
 }
