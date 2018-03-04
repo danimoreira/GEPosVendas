@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace GEPV.Domain.Entities
             Usuario = new Usuario();
         }
         [Column("ID")]
+        [Key]
         public int Id { get; set; }
         [Column("NOME")]
         public string Nome { get; set; }
@@ -23,7 +25,7 @@ namespace GEPV.Domain.Entities
         [Column("EMAIL")]
         public string Email { get; set; }
         [Column("ID_USUARIO")]
-        [ForeignKey("USUARIO")]
+        [ForeignKey("Usuario")]
         public int IdUsuario { get; set; }
         public virtual Usuario Usuario { get; set; }        
     }

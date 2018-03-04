@@ -1,0 +1,36 @@
+﻿@model GEPV.Domain.DTO.LoginDto
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GE Representações - Pós Venda</title>
+
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/signin.css")" rel="stylesheet">
+</head>
+<body class="text-center">
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <h1 class="h3 mb-3 font-weight-normal">Acesso</h1>
+            <span class="text-danger">@Html.ValidationMessageFor(x => x.Usuario)</span>
+            <span class="text-danger">@Html.ValidationMessageFor(x => x.Senha)</span>
+            <input type="text" id="Usuario" name="Usuario" class="form-control" placeholder="Usuário" required>
+            <input type="password" id="Senha" name="Senha" class="form-control" placeholder="Senha" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+            <p class="mt-5 mb-3 text-muted">&copy; Daniel Moreira Developer</p>
+        }            
+
+
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+
+</html>

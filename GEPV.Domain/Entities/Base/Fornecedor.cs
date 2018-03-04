@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace GEPV.Domain.Entities
     public class Fornecedor
     {
         [Column("ID")]
+        [Key]
         public int Id { get; set; }
         [Column("NOME_FANTASIA")]
         public String NOME_FANTASIA { get; set; }

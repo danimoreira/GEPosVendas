@@ -1,6 +1,7 @@
 ﻿using GEPV.Domain.Enum;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,20 +13,21 @@ namespace GEPV.Domain.Entities
     public class Contatos
     {
         [Column("ID")]
+        [Key]
         public int Id { get; set; }
 
         [Column("ID_COMPRADOR")]
-        [ForeignKey("COMPRADOR")]
+        [ForeignKey("Comprador")]
         public int IdComprador { get; set; }
         public virtual Comprador Comprador { get; set; }
 
         [Column("ID_CLIENTE")]
-        [ForeignKey("CLIENTE")]
+        [ForeignKey("Cliente")]
         public int IdCliente { get; set; }
         public virtual Cliente Cliente { get; set; }
 
         [Column("ID_FORNECEDOR")]
-        [ForeignKey("FORNECEDOR")]
+        [ForeignKey("Fornecedor")]
         public int IdFornecedor { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
 
