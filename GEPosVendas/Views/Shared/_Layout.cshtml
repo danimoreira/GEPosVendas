@@ -25,7 +25,7 @@
             
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     @Html.ActionLink("Tarefas", "Index", "Home", new { }, new { @class = "nav-link" })
@@ -42,12 +42,20 @@
                 <li class="nav-item">
                     @Html.ActionLink("Região", "Index", "Regiao", new { }, new { @class = "nav-link" })
                 </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Estado", "Index", "Estado", new { }, new { @class = "nav-link" })
+                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-
-                <input class="form-control mr-sm-2" style="width:300px" type="text" placeholder="Pesquise uma empresa" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="@Url.Action("Pesquisar", "Cliente")">
+                <input class="form-control mr-sm-2" style="width:300px" type="text" name="termo" placeholder="Pesquise uma empresa" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar Empresas</button>
             </form>
+            <div class="float-right text-right" style="padding-left: 100px;">
+                <span class="text-white">@DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</span><br />
+                <span class="text-muted">usuario@gmail.com</span> 
+                <span class="text-white">|</span>
+                @Html.ActionLink("Sair", "LogOut", "Login", new { }, new { @class= "text-warning" })
+            </div>
         </div>
     </nav>
 

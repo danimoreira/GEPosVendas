@@ -22,6 +22,7 @@ namespace GEPV.Domain.Entities
         public string Nome { get; set; }
         [Column("DATA_NASCIMENTO")]
         [Display(Name = "Data de Nascimento")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DataNascimento { get; set; }
         [Column("EMAIL")]
         [Display(Name = "Email")]

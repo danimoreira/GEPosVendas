@@ -25,6 +25,16 @@ namespace GEPosVendas.Controllers
             return View(cliente);
         }
 
+        public ActionResult Pesquisar(string termo)
+        {
+            if (string.IsNullOrEmpty(termo))
+                return HttpNotFound();
+
+            List<Cliente> cliente = Service.List().Where(x => x.RazaoSocial.ToUpper().Contains(termo.ToUpper()) || x.Cnpj.Contains(termo)).ToList();
+
+            return View(cliente);
+        }
+
         // GET: Cliente/Details/5
         public ActionResult Details(int? id)
         {
