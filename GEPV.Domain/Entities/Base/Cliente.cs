@@ -20,32 +20,46 @@ namespace GEPV.Domain.Entities
         [Key]
         public int Id { get; set; }
         [Column("RAZAO_SOCIAL")]
+        [Display(Name = "Razão Social")]
         public string RazaoSocial { get; set; }
         [Column("NOME_FANTASIA")]
+        [Display(Name = "Nome Fantasia")]
         public string NomeFantasia { get; set; }
         [Column("CNPJ")]
+        [Display(Name = "CNPJ")]
         public string Cnpj { get; set; }
         [Column("INSCRICAO_ESTADUAL")]
+        [Display(Name = "Inscrição Estadual")]
         public string InscricaoEstadual { get; set; }
         [Column("TELEFONE_PRINCIPAL")]
+        [Display(Name = "Telefone Principal")]
         public string TelefonePrincipal { get; set; }
         [Column("TELEFONE_CONTATO")]
+        [Display(Name = "Telefone Contato")]
         public string TelefoneContato { get; set; }
         [Column("EMAIL_PRINCIPAL")]
+        [Display(Name = "Email Principal")]
         public string EmailPrincipal { get; set; }
         [Column("EMAIL_NFE")]
+        [Display(Name = "Email NFe")]
         public string EmailNFe { get; set; }
         [Column("OBSERVACAO")]
+        [Display(Name = "Observação")]
         public string Observacao { get; set; }
         [Column("LOGRADOURO")]
+        [Display(Name = "Endereço")]
         public string Logradouro { get; set; }
         [Column("NUMERO")]
+        [Display(Name = "Nº")]
         public string Numero { get; set; }
         [Column("BAIRRO")]
+        [Display(Name = "Bairro")]
         public string Bairro { get; set; }
         [Column("CEP")]
+        [Display(Name = "CEP")]
         public string Cep { get; set; }
         [Column("CIDADE")]
+        [Display(Name = "Cidade")]
         public string Cidade { get; set; }
 
         [Column("ID_ESTADO")]

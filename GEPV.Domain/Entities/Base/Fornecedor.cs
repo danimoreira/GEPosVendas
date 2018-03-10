@@ -15,10 +15,13 @@ namespace GEPV.Domain.Entities
         [Key]
         public int Id { get; set; }
         [Column("NOME_FANTASIA")]
+        [Display(Name = "Nome Fantasia")]
         public String NomeFantasia { get; set; }
         [Column("SIGLA_FORNECEDOR")]
+        [Display(Name = "Sigla")]
         public string Sigla { get; set; }
         [Column("OBSERVACAO")]
+        [Display(Name = "Observação")]
         public string Observacao { get; set; }
     }
 }

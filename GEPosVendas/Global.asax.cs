@@ -19,5 +19,7 @@ namespace GEPosVendas
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
+
+        
     }
 }

@@ -44,7 +44,7 @@ namespace GEPosVendas.Controllers
                 // TODO: Add insert logic here
                 Fornecedor fornecedor = new Fornecedor();
 
-                fornecedor.NomeFantasia = collection["NOME_FANTASIA"];
+                fornecedor.NomeFantasia = collection["NomeFantasia"];
                 fornecedor.Sigla = collection["Sigla"];
                 fornecedor.Observacao = collection["Observacao"];
 
@@ -75,7 +75,7 @@ namespace GEPosVendas.Controllers
                 Fornecedor fornecedor = new Fornecedor();
 
                 fornecedor.Id = id;
-                fornecedor.NomeFantasia = collection["NOME_FANTASIA"];
+                fornecedor.NomeFantasia = collection["NomeFantasia"];
                 fornecedor.Sigla = collection["Sigla"];
                 fornecedor.Observacao = collection["Observacao"];
 

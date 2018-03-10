@@ -25,7 +25,7 @@ namespace GEPosVendas.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginDto loginDto)
+        public ActionResult Login(LoginDto loginDto, string returnUrl)
         {
             var usuarioDados = Service.Logar(loginDto);
 
@@ -34,6 +34,7 @@ namespace GEPosVendas.Controllers
 
             Session["userId"] = usuarioDados.Id;
             Session["userName"] = usuarioDados.Login;
+            Session["email"] = usuarioDados.Email;
             
             return RedirectToAction("Index", "Home");
         }

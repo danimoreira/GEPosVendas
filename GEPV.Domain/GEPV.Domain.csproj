@@ -107,11 +107,19 @@
     <Compile Include="Entities\Base\Regiao.cs" />
     <Compile Include="Entities\GEPVEntities.cs" />
     <Compile Include="Enum\Enums.cs" />
+    <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repository\ICompradorRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEstadoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\ILoginRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRegiaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Services\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\ICompradorService.cs" />
+    <Compile Include="Interfaces\Services\IEstadoService.cs" />
     <Compile Include="Interfaces\Services\IFornecedorService.cs" />
     <Compile Include="Interfaces\Services\ILoginService.cs" />
+    <Compile Include="Interfaces\Services\IRegiaoService.cs" />
     <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Migrations\201802282254525_Inicial.cs" />
     <Compile Include="Migrations\201802282254525_Inicial.Designer.cs">
@@ -123,11 +131,19 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\CompradorRepository.cs" />
+    <Compile Include="Repository\EstadoRepository.cs" />
     <Compile Include="Repository\FornecedorRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\RegiaoRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\CompradorService.cs" />
+    <Compile Include="Services\EstadoService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\RegiaoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>

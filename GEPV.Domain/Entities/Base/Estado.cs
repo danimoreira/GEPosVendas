@@ -13,10 +13,12 @@ namespace GEPV.Domain.Entities
     {
         [Column("ID")]
         [Key]
-        public int MyProperty { get; set; }
+        public int Id { get; set; }
         [Column("DESCRICAO")]
+        [Display(Name = "Estado")]
         public string Descricao { get; set; }
         [Column("SIGLA")]
+        [Display(Name = "UF")]
         public string Sigla { get; set; }
     }
 }

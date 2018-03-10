@@ -13,7 +13,7 @@ namespace GEPV.Domain.Migrations
             //        {
             //            ID = c.Int(nullable: false, identity: true),
             //            RAZAO_SOCIAL = c.String(unicode: false),
-            //            NOME_FANTASIA = c.String(unicode: false),
+            //            NomeFantasia = c.String(unicode: false),
             //            CNPJ = c.String(unicode: false),
             //            INSCRICAO_ESTADUAL = c.String(unicode: false),
             //            TELEFONE_PRINCIPAL = c.String(unicode: false),
@@ -95,7 +95,7 @@ namespace GEPV.Domain.Migrations
             //    c => new
             //        {
             //            ID = c.Int(nullable: false, identity: true),
-            //            NOME_FANTASIA = c.String(unicode: false),
+            //            NomeFantasia = c.String(unicode: false),
             //            SIGLA_FORNECEDOR = c.String(unicode: false),
             //            OBSERVACAO = c.String(unicode: false),
             //        })

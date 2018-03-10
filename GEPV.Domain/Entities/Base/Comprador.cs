@@ -21,12 +21,17 @@ namespace GEPV.Domain.Entities
         [Column("NOME")]
         public string Nome { get; set; }
         [Column("DATA_NASCIMENTO")]
+        [Display(Name = "Data de Nascimento")]
         public DateTime? DataNascimento { get; set; }
         [Column("EMAIL")]
+        [Display(Name = "Email")]
         public string Email { get; set; }        
         [Column("USUARIO")]
+        [Display(Name = "Usuário")]
         public string Login { get; set; }
         [Column("SENHA")]
+        [Display(Name = "Senha")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
     }
 }

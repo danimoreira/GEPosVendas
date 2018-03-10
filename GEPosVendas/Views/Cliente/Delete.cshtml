@@ -1,0 +1,151 @@
+﻿@model GEPV.Domain.Entities.Cliente
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Deseja excluir este registro?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Regiao.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regiao.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RazaoSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeFantasia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeFantasia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InscricaoEstadual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InscricaoEstadual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonePrincipal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonePrincipal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefoneContato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefoneContato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailPrincipal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailPrincipal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailNFe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailNFe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirmar exclusão" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

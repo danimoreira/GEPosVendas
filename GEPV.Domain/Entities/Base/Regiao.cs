@@ -16,6 +16,7 @@ namespace GEPV.Domain.Entities
         public int Id { get; set; }
 
         [Column("DESCRICAO")]
+        [Display(Name = "Região")]
         public string Descricao { get; set; }
 
     }

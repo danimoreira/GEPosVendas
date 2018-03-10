@@ -22,7 +22,10 @@ namespace GEPV.Domain.Services
 
         public Comprador Logar(LoginDto dados)
         {
-           return _repository.List().Where(x => x.Login == dados.Usuario && x.Senha == dados.Senha).FirstOrDefault();            
+           var retorno = _repository.List();
+        
+           return retorno.Where(x => x.Login == dados.Usuario && x.Senha == dados.Senha).FirstOrDefault();
+
         }
     }
 }
