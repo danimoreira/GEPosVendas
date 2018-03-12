@@ -203,7 +203,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,11 +221,11 @@
     <Content Include="Views\Regiao\Details.cshtml" />
     <Content Include="Views\Regiao\Edit.cshtml" />
     <Content Include="Views\Regiao\Index.cshtml" />
-    <Content Include="Views\Comprador\Create.cshtml" />
-    <Content Include="Views\Comprador\Delete.cshtml" />
-    <Content Include="Views\Comprador\Details.cshtml" />
-    <Content Include="Views\Comprador\Edit.cshtml" />
-    <Content Include="Views\Comprador\Index.cshtml" />
+    <Content Include="Views\Vendedor\Create.cshtml" />
+    <Content Include="Views\Vendedor\Delete.cshtml" />
+    <Content Include="Views\Vendedor\Details.cshtml" />
+    <Content Include="Views\Vendedor\Edit.cshtml" />
+    <Content Include="Views\Vendedor\Index.cshtml" />
     <Content Include="Views\Cliente\Create.cshtml" />
     <Content Include="Views\Cliente\Delete.cshtml" />
     <Content Include="Views\Cliente\Details.cshtml" />
@@ -249,6 +248,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

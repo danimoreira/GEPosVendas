@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Services
 {
-    public class CompradorService : ServiceBase<Comprador>, ICompradorService
+    public class VendedorService : ServiceBase<Vendedor>, IVendedorService
     {
-        private ICompradorRepository _repository { get; set; }
+        private IVendedorRepository _repository { get; set; }
 
-        public CompradorService(ICompradorRepository repository) : base(repository)
+        public VendedorService(IVendedorRepository repository) : base(repository)
         {
             _repository = repository;
         }

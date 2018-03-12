@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Entities
 {
-    [Table("COMPRADOR")]
-    public class Comprador
+    [Table("VENDEDOR")]
+    public class Vendedor
     {
-        public Comprador()
+        public Vendedor()
         {
             
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Repository
 {
-    public class CompradorRepository : RepositoryBase<Comprador>, ICompradorRepository
+    public class VendedorRepository : RepositoryBase<Vendedor>, IVendedorRepository
     {
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Interfaces.Repository
 {
-    public interface ICompradorRepository : IRepositoryBase<Comprador>
+    public interface IVendedorRepository : IRepositoryBase<Vendedor>
     {
     }
 }

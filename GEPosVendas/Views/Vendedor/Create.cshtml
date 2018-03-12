@@ -1,4 +1,4 @@
-﻿@model GEPV.Domain.Entities.Comprador
+﻿@model GEPV.Domain.Entities.Vendedor
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Comprador</h4>
+        <h4>Vendedor</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

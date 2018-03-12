@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Interfaces.Services
 {
-    public interface ICompradorService : IServiceBase<Comprador>
+    public interface IVendedorService : IServiceBase<Vendedor>
     {
     }
 }

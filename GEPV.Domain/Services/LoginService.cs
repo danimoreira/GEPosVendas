@@ -11,7 +11,7 @@ using GEPV.Domain.Interfaces.Services;
 
 namespace GEPV.Domain.Services
 {
-    public class LoginService : ServiceBase<Comprador>, ILoginService
+    public class LoginService : ServiceBase<Vendedor>, ILoginService
     {
         private ILoginRepository _repository { get; set; }
 
@@ -20,7 +20,7 @@ namespace GEPV.Domain.Services
             _repository = repository;
         }
 
-        public Comprador Logar(LoginDto dados)
+        public Vendedor Logar(LoginDto dados)
         {
            var retorno = _repository.List();
         

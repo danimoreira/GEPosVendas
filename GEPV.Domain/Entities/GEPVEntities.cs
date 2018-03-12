@@ -13,7 +13,7 @@ namespace GEPV.Domain.Entities
         }
 
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<Comprador> Comprador { get; set; }
+        public virtual DbSet<Vendedor> Comprador { get; set; }
         public virtual DbSet<Contatos> Contatos { get; set; }        
         public virtual DbSet<Fornecedor> Fornecedor { get; set; }        
         public virtual DbSet<Estado> Estado { get; set; }
@@ -22,7 +22,7 @@ namespace GEPV.Domain.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>();
-            modelBuilder.Entity<Comprador>();
+            modelBuilder.Entity<Vendedor>();
             modelBuilder.Entity<Contatos>();            
             modelBuilder.Entity<Fornecedor>();
             modelBuilder.Entity<Estado>();

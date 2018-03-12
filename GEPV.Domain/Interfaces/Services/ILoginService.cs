@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace GEPV.Domain.Interfaces.Services
 {
-    public interface ILoginService : IServiceBase<Comprador>
+    public interface ILoginService : IServiceBase<Vendedor>
     {
-        Comprador Logar(LoginDto dados);
+        Vendedor Logar(LoginDto dados);
     }
 }

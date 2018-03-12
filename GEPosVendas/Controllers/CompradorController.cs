@@ -14,7 +14,7 @@ namespace GEPosVendas.Controllers
 {
     public class CompradorController : Controller
     {
-        private CompradorService Service = new CompradorService(new CompradorRepository());
+        private VendedorService Service = new VendedorService(new VendedorRepository());
 
         // GET: Comprador
         public ActionResult Index()
@@ -29,7 +29,7 @@ namespace GEPosVendas.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comprador comprador = Service.GetById(id.Value);
+            Vendedor comprador = Service.GetById(id.Value);
             if (comprador == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace GEPosVendas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Comprador comprador)
+        public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Vendedor comprador)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace GEPosVendas.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comprador comprador = Service.GetById(id.Value);
+            Vendedor comprador = Service.GetById(id.Value);
             if (comprador == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace GEPosVendas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Comprador comprador)
+        public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Vendedor comprador)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace GEPosVendas.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comprador comprador = Service.GetById(id.Value);
+            Vendedor comprador = Service.GetById(id.Value);
             if (comprador == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comprador comprador = Service.GetById(id);
+            Vendedor comprador = Service.GetById(id);
             Service.Delete(comprador);
             return RedirectToAction("Index");
         }

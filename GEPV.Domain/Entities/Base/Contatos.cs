@@ -19,7 +19,7 @@ namespace GEPV.Domain.Entities
         [Column("ID_COMPRADOR")]
         [ForeignKey("Comprador")]
         public int IdComprador { get; set; }
-        public virtual Comprador Comprador { get; set; }
+        public virtual Vendedor Comprador { get; set; }
 
         [Column("ID_CLIENTE")]
         [ForeignKey("Cliente")]
