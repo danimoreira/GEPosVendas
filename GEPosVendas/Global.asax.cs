@@ -20,6 +20,9 @@ namespace GEPosVendas
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
 
-        
+        public void Session_OnEnd()
+        {
+            FormsAuthentication.SignOut();
+        }
     }
 }

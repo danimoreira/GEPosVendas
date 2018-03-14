@@ -6,7 +6,7 @@ namespace GEPV.Domain.Entities
     using System.Linq;
 
     public class GEPVEntities : DbContext
-    {        
+    {
         public GEPVEntities()
             : base("name=GEPVEntities")
         {
@@ -14,10 +14,11 @@ namespace GEPV.Domain.Entities
 
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Vendedor> Comprador { get; set; }
-        public virtual DbSet<Contatos> Contatos { get; set; }        
-        public virtual DbSet<Fornecedor> Fornecedor { get; set; }        
+        public virtual DbSet<Contatos> Contatos { get; set; }
+        public virtual DbSet<Fornecedor> Fornecedor { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Regiao> Regiao { get; set; }
+        public virtual DbSet<FornecedorPorCliente> FornecedorPorCliente  { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,6 +28,7 @@ namespace GEPV.Domain.Entities
             modelBuilder.Entity<Fornecedor>();
             modelBuilder.Entity<Estado>();
             modelBuilder.Entity<Regiao>();
+            modelBuilder.Entity<FornecedorPorCliente>();
             
             base.OnModelCreating(modelBuilder);
         }

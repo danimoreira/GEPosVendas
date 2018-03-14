@@ -99,8 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\LoginDto.cs" />
+    <Compile Include="DTO\TarefasClientes.cs" />
+    <Compile Include="DTO\TarefasFornecedores.cs" />
+    <Compile Include="DTO\TarefasVendedores.cs" />
     <Compile Include="Entities\Base\Cliente.cs" />
-    <Compile Include="Entities\Base\Comprador.cs" />
+    <Compile Include="Entities\Base\FornecedorPorCliente.cs" />
+    <Compile Include="Entities\Base\Vendedor.cs" />
     <Compile Include="Entities\Base\Contatos.cs" />
     <Compile Include="Entities\Base\Estado.cs" />
     <Compile Include="Entities\Base\Fornecedor.cs" />
@@ -129,6 +133,14 @@
     <Compile Include="Migrations\201803042124259_AjusteCliente.Designer.cs">
       <DependentUpon>201803042124259_AjusteCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803122328191_CorrecaoVendedor.cs" />
+    <Compile Include="Migrations\201803122328191_CorrecaoVendedor.Designer.cs">
+      <DependentUpon>201803122328191_CorrecaoVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803142145108_TabelaFornecedorPorCliente.cs" />
+    <Compile Include="Migrations\201803142145108_TabelaFornecedorPorCliente.Designer.cs">
+      <DependentUpon>201803142145108_TabelaFornecedorPorCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
@@ -145,6 +157,7 @@
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\RegiaoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="SQL\Consultas.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\MySqlCommand.xml" />
@@ -170,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803042124259_AjusteCliente.resx">
       <DependentUpon>201803042124259_AjusteCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803122328191_CorrecaoVendedor.resx">
+      <DependentUpon>201803122328191_CorrecaoVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803142145108_TabelaFornecedorPorCliente.resx">
+      <DependentUpon>201803142145108_TabelaFornecedorPorCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

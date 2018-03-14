@@ -12,7 +12,7 @@ using GEPV.Domain.Services;
 
 namespace GEPosVendas.Controllers
 {
-    public class CompradorController : Controller
+    public class VendedorController : Controller
     {
         private VendedorService Service = new VendedorService(new VendedorRepository());
 

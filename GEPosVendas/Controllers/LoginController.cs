@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace GEPosVendas.Controllers
 {
     public class LoginController : Controller
     {
-        //[Inject]
-        //public ILoginService Service { get; set; }
+        
 
         private LoginService Service = new LoginService(new LoginRepository());
 
@@ -32,16 +32,29 @@ namespace GEPosVendas.Controllers
             if (usuarioDados == null)
                 return View("Index", loginDto);
 
-            Session["userId"] = usuarioDados.Id;
-            Session["userName"] = usuarioDados.Login;
-            Session["email"] = usuarioDados.Email;
-            
-            return RedirectToAction("Index", "Home");
+            FormsAuthentication.SetAuthCookie(loginDto.Usuario, false);
+
+            Response.Cookies.Remove("displayName");
+            HttpCookie cookie = new HttpCookie("displayName", usuarioDados.Nome);
+            Response.Cookies.Add(cookie);
+
+            Response.Cookies.Remove("emailUsuario");
+            HttpCookie cookieEmailUsuario = new HttpCookie("emailUsuario", usuarioDados.Email);
+            Response.Cookies.Add(cookieEmailUsuario);
+
+            Session["emailUsuario"] = usuarioDados.Email;
+            Session["displayName"] = usuarioDados.Nome;
+
+
+            returnUrl = returnUrl ?? "/";
+
+            return Redirect(returnUrl);
         }
 
         public ActionResult LogOut()
         {
             Session.Abandon();
+            FormsAuthentication.SignOut();
             return View("Index", new LoginDto());
         }
     }

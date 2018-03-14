@@ -10,10 +10,10 @@
     <title>GE Representações Ltda.</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="~/Content/starter-template.css" rel="stylesheet">
+    <link href="../Content/starter-template.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,13 +28,13 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @Html.ActionLink("Tarefas", "Index", "Home", new { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Tarefas", "Index", "Tarefas", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Comprador", "Index", "Comprador", new { }, new { @class = "nav-link" })
+                    @Html.ActionLink("Vendedor", "Index", "Vendedor", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
                     @Html.ActionLink("Fornecedor", "Index", "Fornecedor", new { }, new { @class = "nav-link" })
@@ -52,7 +52,7 @@
             </form>
             <div class="float-right text-right" style="padding-left: 100px;">
                 <span class="text-white">@DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</span><br />
-                <span class="text-muted">usuario@gmail.com</span> 
+                <span class="text-muted">@ViewBag.Usuario</span> 
                 <span class="text-white">|</span>
                 @Html.ActionLink("Sair", "LogOut", "Login", new { }, new { @class= "text-warning" })
             </div>
@@ -67,9 +67,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="~/Scripts/jquery-3.0.0.slim.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="~/Scripts/jquery-3.0.0.slim.js"><\/script>')</script>
-    <script src="~/Scripts/popper.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery-3.0.0.slim.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../Scripts/jquery-3.0.0.slim.js"><\/script>')</script>
+    <script src="../Scripts/popper.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
 </body>
 </html>

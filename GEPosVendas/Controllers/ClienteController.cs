@@ -17,6 +17,7 @@ namespace GEPosVendas.Controllers
         private ClienteService Service = new ClienteService(new ClienteRepository());
         private EstadoService EstadoService = new EstadoService(new EstadoRepository());
         private RegiaoService RegiaoService = new RegiaoService(new RegiaoRepository());
+        private VendedorService VendedorService = new VendedorService(new VendedorRepository());
 
         // GET: Cliente
         public ActionResult Index()
@@ -55,6 +56,7 @@ namespace GEPosVendas.Controllers
         {
             ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");            
             ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
             return View();
         }
 
@@ -63,7 +65,7 @@ namespace GEPosVendas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao,IdVendedor,NomeComprador")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -73,6 +75,7 @@ namespace GEPosVendas.Controllers
 
             ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");
             ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
             return View(cliente);
         }
 
@@ -90,6 +93,7 @@ namespace GEPosVendas.Controllers
             }
             ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");
             ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
             return View(cliente);
         }
 
@@ -98,7 +102,7 @@ namespace GEPosVendas.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao,IdVendedor,NomeComprador")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -107,6 +111,7 @@ namespace GEPosVendas.Controllers
             }
             ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");
             ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
             return View(cliente);
         }
 

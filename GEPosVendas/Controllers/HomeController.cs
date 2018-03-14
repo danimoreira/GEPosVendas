@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace GEPosVendas.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()
-        {
-            ViewBag.Usuario = Session["userName"];
+        {   
+            ViewBag.Usuario = Response.Cookies["displayName"].Value ?? Session["displayName"];
             return View();
         }
     }

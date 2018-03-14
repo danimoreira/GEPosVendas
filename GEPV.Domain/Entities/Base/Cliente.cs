@@ -64,13 +64,24 @@ namespace GEPV.Domain.Entities
 
         [Column("ID_ESTADO")]
         [ForeignKey("Estado")]
+        [Display(Name = "Estado")]
         public int IdEstado { get; set; }
         public virtual Estado Estado { get; set; }
 
         [Column("ID_REGIAO")]
         [ForeignKey("Regiao")]
+        [Display(Name = "Região")]
         public int IdRegiao { get; set; }
         public virtual Regiao Regiao { get; set; }
 
+        [Column("NOME_COMPRADOR")]
+        [Display(Name = "Comprador")]
+        public string NomeComprador { get; set; }
+
+        [Column("ID_VENDEDOR")]
+        [ForeignKey("Vendedor")]
+        [Display(Name = "Vendedor")]
+        public int? IdVendedor { get; set; }
+        public virtual Vendedor Vendedor { get; set; }        
     }
 }
