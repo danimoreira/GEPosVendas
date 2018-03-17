@@ -1,0 +1,45 @@
+﻿<div class="container">
+
+    @foreach (var historico in Model)
+    {   
+        <div class="row">
+            <div class="col-xs-8">
+                <span>@historico.NomeCliente</span>
+            </div>
+            <div class="col-xs-4">
+                <span>@historico.NomeVendedor</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <span>@historico.NomeFornecedor</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <span>Data:</span> <span>@historico.DataContato</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <span>Data da Compra:</span><span>@historico.DataCompra</span>
+            </div>
+            <div class="col-xs-6">
+                <span>Data do Agendamento:</span><span>@historico.DataAgenda</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <span>Negociação</span>
+                <span>@historico.Negociacao</span>
+            </div>
+        </div>
+
+        <hr />
+
+    }
+
+</div>

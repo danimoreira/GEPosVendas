@@ -98,6 +98,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\HistoricoDTO.cs" />
     <Compile Include="DTO\LoginDto.cs" />
     <Compile Include="DTO\TarefasClientes.cs" />
     <Compile Include="DTO\TarefasFornecedores.cs" />
@@ -112,14 +113,16 @@
     <Compile Include="Entities\GEPVEntities.cs" />
     <Compile Include="Enum\Enums.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
-    <Compile Include="Interfaces\Repository\ICompradorRepository.cs" />
+    <Compile Include="Interfaces\Repository\IContatosRepository.cs" />
+    <Compile Include="Interfaces\Repository\IVendedorRepository.cs" />
     <Compile Include="Interfaces\Repository\IEstadoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\ILoginRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegiaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
-    <Compile Include="Interfaces\Services\ICompradorService.cs" />
+    <Compile Include="Interfaces\Services\IContatosService.cs" />
+    <Compile Include="Interfaces\Services\IVendedorService.cs" />
     <Compile Include="Interfaces\Services\IEstadoService.cs" />
     <Compile Include="Interfaces\Services\IFornecedorService.cs" />
     <Compile Include="Interfaces\Services\ILoginService.cs" />
@@ -141,17 +144,27 @@
     <Compile Include="Migrations\201803142145108_TabelaFornecedorPorCliente.Designer.cs">
       <DependentUpon>201803142145108_TabelaFornecedorPorCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803171048270_AjusteContatos.cs" />
+    <Compile Include="Migrations\201803171048270_AjusteContatos.Designer.cs">
+      <DependentUpon>201803171048270_AjusteContatos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803171101315_AdicionandoFKVendedor.cs" />
+    <Compile Include="Migrations\201803171101315_AdicionandoFKVendedor.Designer.cs">
+      <DependentUpon>201803171101315_AdicionandoFKVendedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
-    <Compile Include="Repository\CompradorRepository.cs" />
+    <Compile Include="Repository\ContatosRepository.cs" />
+    <Compile Include="Repository\VendedorRepository.cs" />
     <Compile Include="Repository\EstadoRepository.cs" />
     <Compile Include="Repository\FornecedorRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\RegiaoRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Services\ClienteService.cs" />
-    <Compile Include="Services\CompradorService.cs" />
+    <Compile Include="Services\ContatosService.cs" />
+    <Compile Include="Services\VendedorService.cs" />
     <Compile Include="Services\EstadoService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\LoginService.cs" />
@@ -189,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803142145108_TabelaFornecedorPorCliente.resx">
       <DependentUpon>201803142145108_TabelaFornecedorPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803171048270_AjusteContatos.resx">
+      <DependentUpon>201803171048270_AjusteContatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803171101315_AdicionandoFKVendedor.resx">
+      <DependentUpon>201803171101315_AdicionandoFKVendedor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

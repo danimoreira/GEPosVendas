@@ -1,0 +1,54 @@
+﻿
+<div class="modal-dialog">
+    <div class="modal-content">        
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Realizar Contato</h4>
+        </div>            
+
+        <div class="modal-body">
+
+            <form action="@Url.Action("Salvar", "Tarefas")" method="post">
+                <input type="hidden" name="IdVendedor" value="@ViewBag.IdVendedor" />
+                <input type="hidden" name="IdCliente" value="@ViewBag.IdCliente" />
+                <input type="hidden" name="IdFornecedor" value="@ViewBag.IdFornecedor" />
+
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label">Data Contato:</label>
+                        <input type="datetime" class="form-control" id="DataContato" name="DataContato" />
+                    </div>
+
+                    <div class="col-xs-12">
+                        <textarea id="Descricao"  class="form-control" name="Descricao" />
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label class="control-label">Realizar próximo contato:</label>
+                        <input type="datetime" class="form-control" id="DataAgenda" name="DataAgenda" />
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label class="control-label">Data da Compra:</label>
+                        <input type="datetime" class="form-control" id="DataCompra" name="DataCompra" />
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Adicionar Contato" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </form>
+
+            @Html.Partial("~/Views/Shared/_Historico.cshtml", (List<GEPV.Domain.DTO.HistoricoDTO>)ViewBag.Historico)
+
+        </div>
+        <div class="modal-footer">
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+            <input type="button" value="Cancelar" class="btn btn-default" data-dismiss="modal" />
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

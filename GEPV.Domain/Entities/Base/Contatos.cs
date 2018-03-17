@@ -16,10 +16,10 @@ namespace GEPV.Domain.Entities
         [Key]
         public int Id { get; set; }
 
-        [Column("ID_COMPRADOR")]
-        [ForeignKey("Comprador")]
-        public int IdComprador { get; set; }
-        public virtual Vendedor Comprador { get; set; }
+        [Column("ID_VENDEDOR")]
+        [ForeignKey("Vendedor")]
+        public int IdVendedor { get; set; }
+        public virtual Vendedor Vendedor { get; set; }
 
         [Column("ID_CLIENTE")]
         [ForeignKey("Cliente")]
@@ -31,7 +31,7 @@ namespace GEPV.Domain.Entities
         public int IdFornecedor { get; set; }
         public virtual Fornecedor Fornecedor { get; set; }
 
-        [Column("Descricao")]
+        [Column("DESCRICAO")]
         public string Descricao { get; set; }
         [Column("DATA_CONTATO")]
         public DateTime DataContato { get; set; }

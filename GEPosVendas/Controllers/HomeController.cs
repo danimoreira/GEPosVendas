@@ -13,7 +13,7 @@ namespace GEPosVendas.Controllers
         public ActionResult Index()
         {   
             ViewBag.Usuario = Response.Cookies["displayName"].Value ?? Session["displayName"];
-            return View();
+            return RedirectToAction("Index", "Tarefas");
         }
     }
 }

@@ -21,15 +21,13 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         @*<a class="navbar-brand" href="#"><img src="~/Content/img/logo_ge_topo.jpg" alt="Alternate Text" /></a>*@
         <span class="text-white text-sm-left" style="padding-right: 100px">GE Representações Ltda.</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            
-        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"></button>
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     @Html.ActionLink("Tarefas", "Index", "Tarefas", new { }, new { @class = "nav-link" })
-                </li>
+                </li>               
                 <li class="nav-item">
                     @Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })
                 </li>
@@ -45,6 +43,9 @@
                 <li class="nav-item">
                     @Html.ActionLink("Estado", "Index", "Estado", new { }, new { @class = "nav-link" })
                 </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Histórico", "Index", "Historico", new { }, new { @class = "nav-link" })
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="@Url.Action("Pesquisar", "Cliente")">
                 <input class="form-control mr-sm-2" style="width:300px" type="text" name="termo" placeholder="Pesquise uma empresa" aria-label="Search">
@@ -52,9 +53,9 @@
             </form>
             <div class="float-right text-right" style="padding-left: 100px;">
                 <span class="text-white">@DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</span><br />
-                <span class="text-muted">@ViewBag.Usuario</span> 
+                <span class="text-muted">@ViewBag.Usuario</span>
                 <span class="text-white">|</span>
-                @Html.ActionLink("Sair", "LogOut", "Login", new { }, new { @class= "text-warning" })
+                @Html.ActionLink("Sair", "LogOut", "Login", new { }, new { @class = "text-warning" })
             </div>
         </div>
     </nav>
@@ -67,9 +68,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../Scripts/jquery-3.0.0.slim.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../Scripts/jquery-3.0.0.slim.js"><\/script>')</script>
+    
+    <script src="~/Scripts/jquery-3.0.0.slim.js"></script>    
     <script src="../Scripts/popper.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Views/Tarefas.js"></script>
 </body>
 </html>

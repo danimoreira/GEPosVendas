@@ -31,7 +31,7 @@ namespace GEPosVendas.Controllers
             if (string.IsNullOrEmpty(termo))
                 return HttpNotFound();
 
-            List<Cliente> cliente = Service.List().Where(x => x.RazaoSocial.ToUpper().Contains(termo.ToUpper()) || x.Cnpj.Contains(termo)).ToList();
+            List<Cliente> cliente = Service.List().Where(x => x.RazaoSocial.ToUpper().Contains(termo.ToUpper()) || x.Cnpj.Contains(termo) || x.Regiao.Descricao.Contains(termo)).ToList();
 
             return View(cliente);
         }

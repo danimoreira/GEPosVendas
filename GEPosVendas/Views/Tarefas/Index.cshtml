@@ -41,12 +41,12 @@
                                     <div class="col-xs-8">
                                         <span class="">Empresas Vinculadas:</span>
                                         @if (cliente.Fornecedores != null)
-                                        {
-                                            foreach (var empresas in cliente.Fornecedores)
-                                            {
-                                    <span class="badge badge-warning">@empresas.Sigla</span>
-                                            }
-                                        }
+                                {
+                                    foreach (var empresas in cliente.Fornecedores)
+                                    {
+                                        <span class="badge badge-warning">@empresas.Sigla</span>
+                            }
+                        }
 
                                     </div>
                                 </div>
@@ -82,34 +82,34 @@
                 </div>
 
                 @foreach (var fornecedor in ViewBag.FornecedorPorCliente)
-                {
-                    <div id="groupCliente@(cliente.IdCliente)" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
+        {
+            <div id="groupCliente@(cliente.IdCliente)" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
 
-                            <div class="row @fornecedor.CorFornecedorCliente">
-                                <div class="col-xs-3">
-                                    @fornecedor.Nome
-                                </div>
-                                <div class="col-xs-2">
-                                    Último Contato: @fornecedor.UltimoContato
-                                </div>
-                                <div class="col-xs-2">
-                                    Último Compra: @fornecedor.UltimaCompra
-                                </div>
-                                <div class="col-xs-2">
-                                    Próximo Contato: @fornecedor.ProximoContato
-                                </div>
-                                <div class="col-xs-2">
-                                    Próximo Contato: @fornecedor.Situacao
-                                </div>
-                                <div class="col-xs-1">
-                                    <a href="#" class=""><i class="fas fa-calendar-alt"></i></a>
-                                </div>
-                            </div>
-
+                    <div class="row @fornecedor.CorFornecedorCliente">
+                        <div class="col-xs-3">
+                            @fornecedor.Nome
+                        </div>
+                        <div class="col-xs-2">
+                            Último Contato: @fornecedor.UltimoContato
+                        </div>
+                        <div class="col-xs-2">
+                            Último Compra: @fornecedor.UltimaCompra
+                        </div>
+                        <div class="col-xs-2">
+                            Próximo Contato: @fornecedor.ProximoContato
+                        </div>
+                        <div class="col-xs-2">
+                            Próximo Contato: @fornecedor.Situacao
+                        </div>
+                        <div class="col-xs-1">
+                            <button class="btn btn-default details"  data-idCliente="@cliente.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor"><i class="glyphicon glyphicon-file"></i></button>                            
                         </div>
                     </div>
-                }
+
+                </div>
+            </div>
+}
             </div>
         </div>
             }
@@ -117,5 +117,10 @@
 
     </div>
     }
+
+</div>
+
+
+<div class="modal" id="modal">
 
 </div>

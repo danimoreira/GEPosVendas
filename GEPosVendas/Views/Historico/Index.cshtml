@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Histórico de Contatos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Histórico de Contatos</h2>
+
+<form class="form-inline my-2 my-lg-0" action="@Url.Action("Pesquisar", "Historico")">
+    <input class="form-control mr-sm-2" style="width:300px" type="text" name="idCliente" placeholder="" aria-label="Search">
+    <input class="form-control mr-sm-2" style="width:300px" type="text" name="idVendedor" placeholder="" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ver Histórico</button>
+</form>
+
+@if (ViewBag.Historico != null)
+{
+    if (ViewBag.Historico.Count == 0)
+    {
+        <h4>Nenhum histórico informado para o Filtro</h4>
+    }
+    else
+    {
+        @Html.Partial("~/Views/Shared/_Historico.cshtml", (List<GEPV.Domain.DTO.HistoricoDTO>)ViewBag.Historico)
+    }
+}
+
+

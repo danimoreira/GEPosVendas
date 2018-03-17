@@ -74,5 +74,31 @@ namespace GEPV.Domain.SQL
             return db.Database.SqlQuery<TarefasFornecedores>(SQL).ToList();
         }
 
+        public List<HistoricoDTO> GetHistoricoContatos(int? IdCliente, int? IdVendedor)
+        {
+            IdCliente = IdCliente ?? 0;
+            IdVendedor = IdVendedor ?? 0;
+
+            string SQL = string.Format(@"SELECT 
+	                                        CLIENTE.ID IdCliente,
+                                            CLIENTE.RAZAO_SOCIAL NomeCliente,
+                                            FORNECEDOR.ID IdFornecedor,
+                                            FORNECEDOR.NOME_FANTASIA NomeFornecedor,
+                                            VENDEDOR.ID IdVendedor,
+                                            VENDEDOR.NOME NomeVendedor,
+                                            DATA_CONTATO DataContato,
+                                            DATA_COMPRA DataCompra,
+                                            DATA_AGENDA DataAgenda,    
+                                            DESCRICAO Negociacao
+                                        FROM CONTATOS
+                                        INNER JOIN CLIENTE ON CONTATOS.ID_CLIENTE = CLIENTE.ID
+                                        INNER JOIN VENDEDOR ON CONTATOS.ID_VENDEDOR = VENDEDOR.ID
+                                        INNER JOIN FORNECEDOR ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID
+                                        WHERE (CONTATOS.ID_VENDEDOR = {0} OR {0} = 0) 
+                                        AND (CONTATOS.ID_CLIENTE = {1} OR {1} = 0)", IdVendedor, IdCliente);
+
+            return db.Database.SqlQuery<HistoricoDTO>(SQL).ToList();
+        }
+
     }
 }
