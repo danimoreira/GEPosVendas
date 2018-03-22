@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using System.Web.Optimization;
 
 namespace GEPosVendas
 {
@@ -16,8 +17,13 @@ namespace GEPosVendas
         {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+//#if !debug 
+//            BundleTable.EnableOptimizations = true;
+//#endif
+
         }
 
         public void Session_OnEnd()

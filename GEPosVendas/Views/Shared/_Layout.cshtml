@@ -9,17 +9,13 @@
 
     <title>GE Representações Ltda.</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/css")
 
-    <!-- Custom styles for this template -->
-    <link href="../Content/starter-template.css" rel="stylesheet">
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        @*<a class="navbar-brand" href="#"><img src="~/Content/img/logo_ge_topo.jpg" alt="Alternate Text" /></a>*@
         <span class="text-white text-sm-left" style="padding-right: 100px">GE Representações Ltda.</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"></button>
 
@@ -27,7 +23,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     @Html.ActionLink("Tarefas", "Index", "Tarefas", new { }, new { @class = "nav-link" })
-                </li>               
+                </li>
                 <li class="nav-item">
                     @Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })
                 </li>
@@ -60,18 +56,13 @@
         </div>
     </nav>
 
-    <main role="main" class="container">
-
-        @RenderBody()
-
+    <main role="main" class="container" style="height: 85%; width: 80%" >
+        <div class="row">
+            @RenderBody()
+        </div>
     </main><!-- /.container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
-    <script src="~/Scripts/jquery-3.0.0.slim.js"></script>    
-    <script src="../Scripts/popper.js"></script>
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/Views/Tarefas.js"></script>
+
+    @Scripts.Render("~/bundles/layout/js")
+
 </body>
 </html>

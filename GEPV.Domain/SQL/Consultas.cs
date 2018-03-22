@@ -24,17 +24,22 @@ namespace GEPV.Domain.SQL
         public List<TarefasClientes> GetClientes()
         {
             string SQL = @"SELECT  CLIENTE.Id IdCliente,
-                                   'cliente-em-dia' CorCliente,
-                                                    CLIENTE.RAZAO_SOCIAL Nome,
-                                                    REGIAO.DESCRICAO RegiaoDescricao,
-                                                    FORNECEDOR.*,
-                                                    MAX(CONTATOS.DATA_CONTATO) UltimoContato,
-                                                    MAX(CONTATOS.DATA_COMPRA) UltimaCompra,
-                                                    MAX(CONTATOS.DATA_REAGENDA) ProximoContato,
-                                                    CLIENTE.TELEFONE_PRINCIPAL + '/' + CLIENTE.TELEFONE_CONTATO Contato,
-                                                    CLIENTE.NOME_COMPRADOR Responsavel,
-                                                    CLIENTE.EMAIL_PRINCIPAL Email,
-                                                    CLIENTE.ID_VENDEDOR IdVendedor
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'cliente-contactado'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'cliente-a-contactar'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'cliente-atraso'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'cliente-nao-contactado'
+                                    ELSE 'cliente-em-dia'
+                                    END CorCliente,
+									CLIENTE.RAZAO_SOCIAL Nome,
+									REGIAO.DESCRICAO RegiaoDescricao,
+									FORNECEDOR.*,
+									MAX(CONTATOS.DATA_CONTATO) UltimoContato,
+									MAX(CONTATOS.DATA_COMPRA) UltimaCompra,
+									MAX(CONTATOS.DATA_REAGENDA) ProximoContato,
+									CLIENTE.TELEFONE_PRINCIPAL + '/' + CLIENTE.TELEFONE_CONTATO Contato,
+									CLIENTE.NOME_COMPRADOR Responsavel,
+									CLIENTE.EMAIL_PRINCIPAL Email,
+									CLIENTE.ID_VENDEDOR IdVendedor
                             FROM CLIENTE                            
                             INNER JOIN FORNECEDOR_POR_CLIENTE FPC ON FPC.ID_CLIENTE = CLIENTE.ID 
                             INNER JOIN FORNECEDOR ON FPC.ID_FORNECEDOR = FORNECEDOR.ID
@@ -54,7 +59,12 @@ namespace GEPV.Domain.SQL
         public List<TarefasFornecedores> GetFornecedoresPorCliente()
         {
             string SQL = @"SELECT CLIENTE.ID IDCLIENTE,
-                                   '' CORFORNECEDORCLIENTE,
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'cliente-contactado'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'cliente-a-contactar'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'cliente-atraso'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'cliente-nao-contactado'
+                                    ELSE 'cliente-em-dia'
+                                    END CORFORNECEDORCLIENTE,
                                    FORNECEDOR.ID IDFORNECEDOR,
                                    FORNECEDOR.NOME_FANTASIA NOME,
                                    FORNECEDOR.SIGLA_FORNECEDOR SIGLA,
