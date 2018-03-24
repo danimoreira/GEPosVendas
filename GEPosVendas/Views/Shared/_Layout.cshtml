@@ -56,11 +56,15 @@
         </div>
     </nav>
 
-    <main role="main" class="container" style="height: 85%; width: 80%" >
-        <div class="row">
-            @RenderBody()
-        </div>
+    <main role="main" class="" style="height: 85%; width: 80%; margin-bottom: 1%;" >
+        @RenderBody()
     </main><!-- /.container -->
+
+    <div class="row fixed-bottom">
+        <div class="col-12">
+            <p>footer</p>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/layout/js")
 

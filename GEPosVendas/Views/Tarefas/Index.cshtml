@@ -4,123 +4,99 @@
     int contVendedor = 0;
 }
 
-<h4 class="display-4" style="color: orange">Tarefas Diárias - @DateTime.Now.ToString("dd/MM/yyyy")</h4>
+@*<div class="row">
+    <div class="col-12">
+        <h4 class="display-4" style="color: orange">Tarefas Diárias - @DateTime.Now.ToString("dd/MM/yyyy")</h4>
+    </div>    
+</div>*@
 
-<ul class="nav nav-tabs">
-    @foreach (var item in ViewBag.Vendedores)
-    {        
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#vendedor@(item.IdVendedor)" role="tab">@item.NomeVendedor</a>
-        </li>
-    }    
-</ul>
-
-<div class="tab-content">
-    @foreach (var vendedor in ViewBag.Vendedores)
-    {
-    <div class="tab-pane fade in" id="vendedor@(vendedor.IdVendedor)" role="tabpanel">
-        @foreach (var cliente in ViewBag.Clientes)
-        {
-            if (cliente.IdVendedor == vendedor.IdVendedor)
+<div class="row">
+    <div class="col-12">
+        <ul class="nav nav-tabs">
+            @foreach (var item in ViewBag.Vendedores)
             {
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header @cliente.CorCliente" id="cliente@(cliente.IdCliente)">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#groupCliente@(cliente.IdCliente)" aria-expanded="true" aria-controls="groupCliente@(cliente.IdCliente)">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <span class="text-xl-left text-uppercase">@cliente.Nome</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-4">
-                                        <span class="badge badge-dark text-left">@cliente.RegiaoDescricao</span>
-                                    </div>
-                                    <div class="col-xs-8">
-                                        <span class="">Empresas Vinculadas:</span>
-                                        @if (cliente.Fornecedores != null)
-                                {
-                                    foreach (var empresas in cliente.Fornecedores)
-                                    {
-                                        <span class="badge badge-warning">@empresas.Sigla</span>
-                            }
-                        }
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-4">
-                                        <span>Último Contato: @cliente.UltimoContato</span>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span>Última Compra: @cliente.UltimaCompra</span>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span>Próximo Contato: @cliente.ProximoContato</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-4">
-                                        <span><i class="fa-mobile-phone"></i> @cliente.Contato</span>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span><i class="fas fa-users"></i> @cliente.Responsavel</span>
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <span><i class="fas fa-envelope"></i> @cliente.Email</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
-                    </h5>
-                </div>
-
-                @foreach (var fornecedor in ViewBag.FornecedorPorCliente)
+                <li class="nav-item @(item.IdVendedor == (int)ViewBag.IdVendedorLogado ? "active show" : "")">
+                    <a class="nav-link" data-toggle="tab" href="#vendedor@(item.IdVendedor)" role="tab">@item.NomeVendedor</a>
+                </li>
+            }
+        </ul>
+    </div>  
+    
+    <div class="col-12">
+        <div class="tab-content">
+            @foreach (var vendedor in ViewBag.Vendedores)
         {
-            <div id="groupCliente@(cliente.IdCliente)" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
+            <div class="tab-pane fade in @(vendedor.IdVendedor == (int)ViewBag.IdVendedorLogado ? "active show" : "")" id="vendedor@(vendedor.IdVendedor)" role="tabpanel">
+                @foreach (var cliente in ViewBag.Clientes)
+            {
+                if (cliente.IdVendedor == vendedor.IdVendedor)
+                {
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header @cliente.CorCliente @(cliente.CorCliente == "bg-light" ? "" : "text-white")" id="cliente@(cliente.IdCliente)">
+                                <button class="col-12 btn @cliente.CorCliente @(cliente.CorCliente == "bg-light" ? "" : "text-white")" data-toggle="collapse" onclick="tarefas.DetalharCliente(this)" data-target="#groupCliente@(cliente.IdCliente)" aria-expanded="true" aria-controls="groupCliente@(cliente.IdCliente)" data-url="@Url.Action("Detalhar", "Tarefas", new { idcliente = cliente.IdCliente })">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h3 class="text-xl-left text-uppercase">@cliente.Nome</h3>
+                                        </div>
+                                        <div class="col-4">
+                                            @if (cliente.Fornecedores != null)
+                {
+                    foreach (var empresas in cliente.Fornecedores)
+                    {
+                            <span class="badge badge-warning">@empresas.Sigla</span>
+}
+}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 text-left">
+                                            <p class="badge badge-dark text-left">@cliente.RegiaoDescricao</p>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row text-left text-uppercase">
+                                        <div class="col-4">
+                                            <span>Último Contato: @(cliente.UltimoContato == null ? "(Não Realizado)" : cliente.UltimoContato)</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span>Última Compra: @(cliente.UltimaCompra == null ? "(Não Realizado)" : cliente.UltimaCompra)</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span>Próximo Contato: @(cliente.ProximoContato == null ? "(Não Realizado)" : cliente.ProximoContato)</span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-left">
+                                        <div class="col-4">
+                                            <span><i class="fa fa-mobile-phone fa-lg"></i> @cliente.Contato</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span><i class="fa fa-users fa-lg"></i> @cliente.Responsavel</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span><i class="fa fa-envelope fa-lg"></i> @cliente.Email</span>
+                                        </div>
+                                    </div>
+                                </button>
 
-                    <div class="row @fornecedor.CorFornecedorCliente">
-                        <div class="col-xs-3">
-                            @fornecedor.Nome
-                        </div>
-                        <div class="col-xs-2">
-                            Último Contato: @fornecedor.UltimoContato
-                        </div>
-                        <div class="col-xs-2">
-                            Último Compra: @fornecedor.UltimaCompra
-                        </div>
-                        <div class="col-xs-2">
-                            Próximo Contato: @fornecedor.ProximoContato
-                        </div>
-                        <div class="col-xs-2">
-                            Próximo Contato: @fornecedor.Situacao
-                        </div>
-                        <div class="col-xs-1">
-                            <button class="btn btn-default details"  data-idCliente="@cliente.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor"><i class="glyphicon glyphicon-file"></i></button>                            
+
+                            </div>
+
+                            <div id="groupCliente@(cliente.IdCliente)" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+
+                            </div>
+
                         </div>
                     </div>
-
-                </div>
-            </div>
-}
-            </div>
-        </div>
             }
         }
+            </div>
+    }
+        </div>
+    </div>
+
+    <div class="modal" id="modal" style="width: 900px">
 
     </div>
-    }
-
-</div>
-
-
-<div class="modal" id="modal">
 
 </div>

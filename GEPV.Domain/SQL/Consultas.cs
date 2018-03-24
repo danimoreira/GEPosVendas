@@ -24,19 +24,19 @@ namespace GEPV.Domain.SQL
         public List<TarefasClientes> GetClientes()
         {
             string SQL = @"SELECT  CLIENTE.Id IdCliente,
-                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'cliente-contactado'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'cliente-a-contactar'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'cliente-atraso'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'cliente-nao-contactado'
-                                    ELSE 'cliente-em-dia'
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'bg-warning'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'bg-danger'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'bg-light'
+                                    ELSE 'bg-info'
                                     END CorCliente,
 									CLIENTE.RAZAO_SOCIAL Nome,
 									REGIAO.DESCRICAO RegiaoDescricao,
 									FORNECEDOR.*,
 									MAX(CONTATOS.DATA_CONTATO) UltimoContato,
 									MAX(CONTATOS.DATA_COMPRA) UltimaCompra,
-									MAX(CONTATOS.DATA_REAGENDA) ProximoContato,
-									CLIENTE.TELEFONE_PRINCIPAL + '/' + CLIENTE.TELEFONE_CONTATO Contato,
+									MAX(CONTATOS.DATA_AGENDA) ProximoContato,
+									CLIENTE.TELEFONE_PRINCIPAL Contato,
 									CLIENTE.NOME_COMPRADOR Responsavel,
 									CLIENTE.EMAIL_PRINCIPAL Email,
 									CLIENTE.ID_VENDEDOR IdVendedor
@@ -56,30 +56,36 @@ namespace GEPV.Domain.SQL
             return db.Database.SqlQuery<TarefasClientes>(SQL).ToList();
         }
 
-        public List<TarefasFornecedores> GetFornecedoresPorCliente()
+        public List<TarefasFornecedores> GetFornecedoresPorCliente(int? idCliente = 0)
         {
-            string SQL = @"SELECT CLIENTE.ID IDCLIENTE,
-                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'cliente-contactado'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'cliente-a-contactar'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'cliente-atraso'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'cliente-nao-contactado'
-                                    ELSE 'cliente-em-dia'
-                                    END CORFORNECEDORCLIENTE,
+            string SQL = string.Format(@"SELECT CLIENTE.ID IDCLIENTE,
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'bg-warning'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'bg-danger'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'bg-light'
+                                    ELSE 'bg-info'
+                                    END CORFORNECEDORCLIENTE,                                    
                                    FORNECEDOR.ID IDFORNECEDOR,
                                    FORNECEDOR.NOME_FANTASIA NOME,
                                    FORNECEDOR.SIGLA_FORNECEDOR SIGLA,
                                    MAX(CONTATOS.DATA_CONTATO) ULTIMOCONTATO,
                                    MAX(CONTATOS.DATA_COMPRA) ULTIMACOMPRA,
                                    MAX(CONTATOS.DATA_AGENDA) PROXIMOCONTATO,
-                                   '' SITUACAO
+                                   CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'CONTATO REALIZADO'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'CONTATO A REALIZAR NO DIA'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'CONTATO EM ATRASO'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'NUNCA REALIZADO CONTATO'
+                                    ELSE 'CONTATO EM DIA'
+                                    END SITUACAO
                             FROM FORNECEDOR
                             INNER JOIN FORNECEDOR_POR_CLIENTE FPC ON FPC.ID_FORNECEDOR = FORNECEDOR.ID 
                             INNER JOIN CLIENTE ON FPC.ID_CLIENTE = CLIENTE.ID
-                            LEFT JOIN CONTATOS ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID AND CONTATOS.ID_CLIENTE = CLIENTE.ID                            
+                            LEFT JOIN CONTATOS ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID AND CONTATOS.ID_CLIENTE = CLIENTE.ID  
+                            WHERE CLIENTE.ID = {0}
                             GROUP BY CLIENTE.ID,
                                      FORNECEDOR.ID,
                                      FORNECEDOR.NOME_FANTASIA,
-                                     FORNECEDOR.SIGLA_FORNECEDOR";
+                                     FORNECEDOR.SIGLA_FORNECEDOR", idCliente.Value.ToString());
 
             return db.Database.SqlQuery<TarefasFornecedores>(SQL).ToList();
         }

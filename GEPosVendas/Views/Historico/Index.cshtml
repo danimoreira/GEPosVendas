@@ -6,8 +6,8 @@
 <h2>Histórico de Contatos</h2>
 
 <form class="form-inline my-2 my-lg-0" action="@Url.Action("Pesquisar", "Historico")">
-    <input class="form-control mr-sm-2" style="width:300px" type="text" name="idCliente" placeholder="" aria-label="Search">
-    <input class="form-control mr-sm-2" style="width:300px" type="text" name="idVendedor" placeholder="" aria-label="Search">
+    @Html.DropDownList("idCliente", null, htmlAttributes: new { @class = "form-control" })
+    @Html.DropDownList("idVendedor", null, htmlAttributes: new { @class = "form-control" })
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ver Histórico</button>
 </form>
 
@@ -21,6 +21,10 @@
     {
         @Html.Partial("~/Views/Shared/_Historico.cshtml", (List<GEPV.Domain.DTO.HistoricoDTO>)ViewBag.Historico)
     }
+}
+else
+{
+    <h4>Nenhum histórico informado para o Filtro</h4>
 }
 
 

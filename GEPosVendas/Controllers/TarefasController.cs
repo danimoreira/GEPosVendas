@@ -1,4 +1,5 @@
-﻿using GEPV.Domain.Entities;
+﻿using GEPV.Domain.DTO;
+using GEPV.Domain.Entities;
 using GEPV.Domain.Interfaces.Services;
 using GEPV.Domain.Repository;
 using GEPV.Domain.Services;
@@ -17,12 +18,12 @@ namespace GEPosVendas.Controllers
 
         // GET: Tarefas
         public ActionResult Index()
-        {
-            Consultas consultaSQL = new Consultas();
-
-            ViewBag.Vendedores = consultaSQL.GetVendedores();
-            ViewBag.FornecedorPorCliente = consultaSQL.GetFornecedoresPorCliente();
-            ViewBag.Clientes = consultaSQL.GetClientes();
+        {   
+            ViewBag.Vendedores = new Consultas().GetVendedores();            
+            ViewBag.Clientes = new Consultas().GetClientes();
+            
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
 
             return View();
         }
@@ -34,7 +35,10 @@ namespace GEPosVendas.Controllers
 
             ViewBag.Historico = new Consultas().GetHistoricoContatos(idCliente, null);
             ViewBag.IdCliente = idCliente;
-            ViewBag.IdVendedor = 2;
+            ViewBag.IdVendedor = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
+            if (ViewBag.IdVendedor == null)
+                return RedirectToAction("Index", "Login");
+
             ViewBag.IdFornecedor = idFornecedor;
 
             return View();
@@ -50,6 +54,15 @@ namespace GEPosVendas.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ViewResult Detalhar(int? idcliente)
+        {
+            if (idcliente.HasValue)
+                ViewBag.Fornecedores = new Consultas().GetFornecedoresPorCliente(idcliente);
+
+            return View();
         }
 
 

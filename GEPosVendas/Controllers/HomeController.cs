@@ -12,7 +12,7 @@ namespace GEPosVendas.Controllers
         // GET: Home
         public ActionResult Index()
         {   
-            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value ?? Session["displayName"];
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
             if (string.IsNullOrEmpty(ViewBag.Usuario))
                 return RedirectToAction("Index", "Login");
 

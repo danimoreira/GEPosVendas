@@ -1,11 +1,19 @@
-﻿cliente-em-dia {
+﻿body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
 
+cliente-em-dia {
+    background-color: yellow !important;
 }
 
 cliente-atraso {
-
+    background-color: red !important;
 }
 
 cliente-contactado {
+    background-color: green !important;
+}
 
+cliente-nao-contactado {
+    background-color: black !important;
 }

@@ -15,7 +15,7 @@ namespace GEPosVendas
                         "~/Content/bootstrap-grid.css",
                         "~/Content/bootstrap-reboot.css",
                         "~/Content/DataTables/css/dataTables.jqueryui.min.css",
-                        "~/Content/font-awesome.css",
+                        "~/Content/font-awesome.min.css",
                         "~/Content/toastr.css",
                         "~/Content/stater-template.css",
                         "~/Content/signin.css",
@@ -32,7 +32,8 @@ namespace GEPosVendas
                         "~/Scripts/bootstrap-select.js",
                         "~/Scripts/toastr.js",
                         "~/Scripts/popper-utils.js",
-                        "~/Scripts/popper.js"));            
+                        "~/Scripts/popper.js",
+                        "~/Scripts/Views/Tarefas.js"));            
         }
     }
 }

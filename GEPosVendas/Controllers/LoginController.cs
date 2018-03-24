@@ -41,7 +41,11 @@ namespace GEPosVendas.Controllers
             Response.Cookies.Remove("emailUsuario");
             HttpCookie cookieEmailUsuario = new HttpCookie("emailUsuario", usuarioDados.Email);
             Response.Cookies.Add(cookieEmailUsuario);
-            
+
+            Response.Cookies.Remove("idVendedorLogado");
+            HttpCookie cookieVendedorLogado = new HttpCookie("idVendedorLogado", usuarioDados.Id.ToString());
+            Response.Cookies.Add(cookieVendedorLogado);
+
             returnUrl = returnUrl ?? "/";
 
             return Redirect(returnUrl);
