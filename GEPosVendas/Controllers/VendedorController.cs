@@ -19,12 +19,14 @@ namespace GEPosVendas.Controllers
         // GET: Comprador
         public ActionResult Index()
         {
+            this.UpdateBag();
             return View(Service.List());
         }
 
         // GET: Comprador/Details/5
         public ActionResult Details(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +42,7 @@ namespace GEPosVendas.Controllers
         // GET: Comprador/Create
         public ActionResult Create()
         {
+            this.UpdateBag();
             return View();
         }
 
@@ -50,6 +53,8 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Vendedor comprador)
         {
+            this.UpdateBag();
+
             if (ModelState.IsValid)
             {
                 Service.Add(comprador);
@@ -62,6 +67,8 @@ namespace GEPosVendas.Controllers
         // GET: Comprador/Edit/5
         public ActionResult Edit(int? id)
         {
+            this.UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +88,8 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nome,DataNascimento,Email,Login,Senha")] Vendedor comprador)
         {
+            this.UpdateBag();
+
             if (ModelState.IsValid)
             {
                 Service.Update(comprador);
@@ -92,6 +101,8 @@ namespace GEPosVendas.Controllers
         // GET: Comprador/Delete/5
         public ActionResult Delete(int? id)
         {
+            this.UpdateBag();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,9 +120,18 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            this.UpdateBag();
+
             Vendedor comprador = Service.GetById(id);
             Service.Delete(comprador);
+           
             return RedirectToAction("Index");
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
         }
     }
 }

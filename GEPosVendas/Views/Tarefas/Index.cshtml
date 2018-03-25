@@ -51,19 +51,19 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12 text-left">
-                                            <p class="badge badge-dark text-left">@cliente.RegiaoDescricao</p>
+                                            <p class="badge badge-info text-left">@cliente.RegiaoDescricao</p>
                                         </div>
                                     </div>
                                     <br />
                                     <div class="row text-left text-uppercase">
                                         <div class="col-4">
-                                            <span>Último Contato: @(cliente.UltimoContato == null ? "(Não Realizado)" : cliente.UltimoContato)</span>
+                                            <span>Último Contato: @(cliente.UltimoContato == null ? "(Não Realizado)" : cliente.UltimoContato.ToString("dd/MM/yyyy"))</span>
                                         </div>
                                         <div class="col-4">
-                                            <span>Última Compra: @(cliente.UltimaCompra == null ? "(Não Realizado)" : cliente.UltimaCompra)</span>
+                                            <span>Última Compra: @(cliente.UltimaCompra == null ? "(Não Realizado)" : cliente.UltimaCompra.ToString("dd/MM/yyyy"))</span>
                                         </div>
                                         <div class="col-4">
-                                            <span>Próximo Contato: @(cliente.ProximoContato == null ? "(Não Realizado)" : cliente.ProximoContato)</span>
+                                            <span>Próximo Contato: @(cliente.ProximoContato == null ? "(Não Realizado)" : cliente.ProximoContato.ToString("dd/MM/yyyy"))</span>
                                         </div>
                                     </div>
                                     <div class="row text-left">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    <div class="modal" id="modal" style="width: 900px">
+    <div class="modal" id="modal">
 
     </div>
 

@@ -24,9 +24,9 @@ namespace GEPV.Domain.SQL
         public List<TarefasClientes> GetClientes()
         {
             string SQL = @"SELECT  CLIENTE.Id IdCliente,
-                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'bg-warning'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'bg-danger'
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > DATE_FORMAT(NOW(), '%d/%m/%Y') AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = DATE_FORMAT(NOW(), '%d/%m/%Y') THEN 'bg-warning'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < DATE_FORMAT(NOW(), '%d/%m/%Y') THEN 'bg-danger'
                                     WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'bg-light'
                                     ELSE 'bg-info'
                                     END CorCliente,
@@ -59,9 +59,9 @@ namespace GEPV.Domain.SQL
         public List<TarefasFornecedores> GetFornecedoresPorCliente(int? idCliente = 0)
         {
             string SQL = string.Format(@"SELECT CLIENTE.ID IDCLIENTE,
-                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > NOW() AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) = NOW() THEN 'bg-warning'
-                                    WHEN MAX(CONTATOS.DATA_AGENDA) < NOW() THEN 'bg-danger'
+                                    CASE WHEN MAX(CONTATOS.DATA_AGENDA) > DATE_FORMAT(NOW(), '%d/%m/%Y') AND MAX(CONTATOS.DATA_CONTATO) = NOW() THEN 'bg-success'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) = DATE_FORMAT(NOW(), '%d/%m/%Y') THEN 'bg-warning'
+                                    WHEN MAX(CONTATOS.DATA_AGENDA) < DATE_FORMAT(NOW(), '%d/%m/%Y') THEN 'bg-danger'
                                     WHEN MAX(CONTATOS.DATA_AGENDA) IS NULL THEN 'bg-light'
                                     ELSE 'bg-info'
                                     END CORFORNECEDORCLIENTE,                                    

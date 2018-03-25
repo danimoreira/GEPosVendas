@@ -1,54 +1,57 @@
 ﻿
-<div class="modal-dialog">
+<div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">        
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title">Realizar Contato</h4>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
         </div>            
 
         <div class="modal-body">
+            <div class="container-fluid">
+                <form action="@Url.Action("Salvar", "Tarefas")" method="post">
+                    <input type="hidden" name="IdVendedor" value="@ViewBag.IdVendedor" />
+                    <input type="hidden" name="IdCliente" value="@ViewBag.IdCliente" />
+                    <input type="hidden" name="IdFornecedor" value="@ViewBag.IdFornecedor" />
 
-            <form action="@Url.Action("Salvar", "Tarefas")" method="post">
-                <input type="hidden" name="IdVendedor" value="@ViewBag.IdVendedor" />
-                <input type="hidden" name="IdCliente" value="@ViewBag.IdCliente" />
-                <input type="hidden" name="IdFornecedor" value="@ViewBag.IdFornecedor" />
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <label class="control-label">Data Contato:</label>
+                            <input type="datetime" class="form-control" id="DataContato" name="DataContato" value="@DateTime.Now.ToString("dd/MM/yyyy")"/>
+                        </div>
 
-                <div class="row form-group">
-                    <div class="col-xs-12">
-                        <label class="control-label">Data Contato:</label>
-                        <input type="datetime" class="form-control" id="DataContato" name="DataContato" />
+                        <div class="col-12">
+                            <label class="control-label">Negociação:</label>
+                            <textarea id="Descricao" class="form-control" name="Descricao" rows="6" />
+                        </div>
+
+                        <div class="col-6">
+                            <label class="control-label">Realizar próximo contato:</label>
+                            <input type="datetime" class="form-control datepicker" id="DataAgenda" name="DataAgenda" />
+                        </div>
+
+                        <div class="col-6">
+                            <label class="control-label">Data da Compra:</label>
+                            <input type="datetime" class="form-control datepicker" id="DataCompra" name="DataCompra" />
+                        </div>
+
                     </div>
 
-                    <div class="col-xs-12">
-                        <textarea id="Descricao"  class="form-control" name="Descricao" />
+                    <div class="form-group text-right">
+                        <div class="col-12 ">
+                            <input type="submit" value="Adicionar Contato" class="btn btn-primary" />
+                        </div>
                     </div>
 
-                    <div class="col-xs-6">
-                        <label class="control-label">Realizar próximo contato:</label>
-                        <input type="datetime" class="form-control" id="DataAgenda" name="DataAgenda" />
-                    </div>
+                </form>
 
-                    <div class="col-xs-6">
-                        <label class="control-label">Data da Compra:</label>
-                        <input type="datetime" class="form-control" id="DataCompra" name="DataCompra" />
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Adicionar Contato" class="btn btn-default" />
-                    </div>
-                </div>
-
-            </form>
-
-            @Html.Partial("~/Views/Shared/_Historico.cshtml", (List<GEPV.Domain.DTO.HistoricoDTO>)ViewBag.Historico)
-
+                <h5 class="font-weight-bold text-uppercase">Histórico</h5>
+                <hr />
+                <br />
+                @Html.Partial("~/Views/Shared/_Historico.cshtml", (List<GEPV.Domain.DTO.HistoricoDTO>)ViewBag.Historico)
+            </div>
         </div>
-        <div class="modal-footer">
-            <input type="submit" value="Salvar" class="btn btn-primary" />
-            <input type="button" value="Cancelar" class="btn btn-default" data-dismiss="modal" />
+        <div class="modal-footer">    
+            <input type="button" value="Fechar" class="btn btn-default" data-dismiss="modal" />
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

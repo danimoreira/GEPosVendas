@@ -19,12 +19,14 @@ namespace GEPosVendas.Controllers
         // GET: Regiao
         public ActionResult Index()
         {
+            this.UpdateBag();
             return View(Service.List());
         }
 
         // GET: Regiao/Details/5
         public ActionResult Details(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +42,7 @@ namespace GEPosVendas.Controllers
         // GET: Regiao/Create
         public ActionResult Create()
         {
+            this.UpdateBag();
             return View();
         }
 
@@ -50,6 +53,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Descricao")] Regiao regiao)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Add(regiao);                
@@ -62,6 +66,7 @@ namespace GEPosVendas.Controllers
         // GET: Regiao/Edit/5
         public ActionResult Edit(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +86,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Descricao")] Regiao regiao)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Update(regiao);
@@ -92,6 +98,7 @@ namespace GEPosVendas.Controllers
         // GET: Regiao/Delete/5
         public ActionResult Delete(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,9 +116,16 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            this.UpdateBag();
             Regiao regiao = Service.GetById(id);
             Service.Delete(id);
             return RedirectToAction("Index");
-        }       
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
+        }
     }
 }

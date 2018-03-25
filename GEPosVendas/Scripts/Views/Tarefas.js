@@ -1,6 +1,4 @@
-﻿
-
-var Tarefas = function () {
+﻿var Tarefas = function () {
 
     this.DetalharCliente = function (obj) {
         var urlDetalhe = $(obj).attr("data-url");
@@ -11,16 +9,12 @@ var Tarefas = function () {
             type: 'GET',
             url: urlDetalhe + "",
             success: function (partialHtml) {
-                debugger;
                 panelBody.html(partialHtml);
-
             },
             error: function (error) {
                 alert('error; ' + eval(error));
             }
         });
-
-
     }
 
     this.RealizarTarefas = function (obj) {
@@ -30,9 +24,8 @@ var Tarefas = function () {
             $("#modal").modal();
         })
     }
-
 }
 
 $(document).ready(function () {
-    tarefas = new Tarefas();  
+    tarefas = new Tarefas();
 });

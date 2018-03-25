@@ -4,28 +4,30 @@
         {
             <div class="card-body border-bottom border-dark @fornecedor.CorFornecedorCliente @(fornecedor.CorFornecedorCliente == "bg-light" ? "" : "text-white")">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <h4 class="text-uppercase">@fornecedor.Nome</h4>
                     </div>
                     <div class="col-2">
                         <p>Último Contato:</p>
-                        <p>@(fornecedor.UltimoContato == null ? "(Não Realizado)" : fornecedor.UltimoContato)</p>
+                        <p>@(fornecedor.UltimoContato == null ? "(Não Realizado)" : fornecedor.UltimoContato.ToString("dd/MM/yyyy"))</p>
                     </div>
                     <div class="col-2">
                         <p>Último Compra:</p>
-                        <p>@(fornecedor.UltimaCompra == null ? "(Não Realizado)" : fornecedor.UltimaCompra)</p>
+                        <p>@(fornecedor.UltimaCompra == null ? "(Não Realizado)" : fornecedor.UltimaCompra.ToString("dd/MM/yyyy"))</p>
                     </div>
                     <div class="col-2">
                         <p>Próximo Contato:</p>
-                        <p>@(fornecedor.ProximoContato == null ? "(Não Realizado)" : fornecedor.ProximoContato)</p>
+                        <p>@(fornecedor.ProximoContato == null ? "(Não Realizado)" : fornecedor.ProximoContato.ToString("dd/MM/yyyy"))</p>
                     </div>
                     <div class="col-3">
                         <p class="text-uppercase">@fornecedor.Situacao</p>
                     </div>
-                    <div class="col-1">
-                        <button class="btn details" data-idCliente="@fornecedor.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor" onclick="tarefas.RealizarTarefas(this)">
-                            <i class="fa fa-address-card"></i>
-                        </button>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-right">                        
+                        <button class="btn btn-dark details" value="Realizar Contato" data-idCliente="@fornecedor.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor" onclick="tarefas.RealizarTarefas(this)">
+                            <i class="fa fa-phone"></i> Realizar Contato
+                        </button>                        
                     </div>
                 </div>
             </div>

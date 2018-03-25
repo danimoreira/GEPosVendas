@@ -19,12 +19,14 @@ namespace GEPosVendas.Controllers
         // GET: Estado
         public ActionResult Index()
         {
+            this.UpdateBag();
             return View(Service.List());
         }
 
         // GET: Estado/Details/5
         public ActionResult Details(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +42,7 @@ namespace GEPosVendas.Controllers
         // GET: Estado/Create
         public ActionResult Create()
         {
+            this.UpdateBag();
             return View();
         }
 
@@ -50,6 +53,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Descricao,Sigla")] Estado estado)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Add(estado);
@@ -62,6 +66,7 @@ namespace GEPosVendas.Controllers
         // GET: Estado/Edit/5
         public ActionResult Edit(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +86,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Descricao,Sigla")] Estado estado)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Update(estado);
@@ -92,6 +98,7 @@ namespace GEPosVendas.Controllers
         // GET: Estado/Delete/5
         public ActionResult Delete(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,6 +116,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            this.UpdateBag();
             Estado estado = Service.GetById(id);
             Service.Delete(estado);
             return RedirectToAction("Index");
@@ -121,6 +129,12 @@ namespace GEPosVendas.Controllers
                 Service.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
         }
     }
 }

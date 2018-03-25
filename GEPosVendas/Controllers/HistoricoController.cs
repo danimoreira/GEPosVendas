@@ -38,7 +38,7 @@ namespace GEPosVendas.Controllers
             {
                 Text = x.RazaoSocial,
                 Value = x.Id.ToString()
-            }).ToList();
+            }).ToList();            
 
             ViewBag.idVendedor = VendedorService.List().Select(x => new SelectListItem()
             {

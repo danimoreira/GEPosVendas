@@ -1,45 +1,44 @@
 ﻿<div class="container">
 
     @foreach (var historico in Model)
-    {   
-        <div class="row">
-            <div class="col-xs-8">
-                <span>@historico.NomeCliente</span>
-            </div>
-            <div class="col-xs-4">
-                <span>@historico.NomeVendedor</span>
+    {
+    <div class="row form-group">
+        <div class="col-8">
+            <span class="font-weight-bold">Data do Contato: </span> <span>@(historico.DataContato == null ? "(Não Realizado)" : historico.DataContato.ToString("dd/MM/yyyy"))</span>
+        </div>
+        <div class="col-4">
+            <span class="font-weight-bold">Vendedor: </span> <span class="text-uppercase">@historico.NomeVendedor</span>
+        </div>
+    </div>
+
+        <div class="row form-group">
+            <div class="col-12">
+                <span class="font-weight-bold">Cliente: </span> <span class="text-uppercase">@historico.NomeCliente</span>
+            </div>            
+        </div>
+
+        <div class="row form-group">
+            <div class="col-12">
+                <span class="font-weight-bold">Fornecedor: </span> <span class="text-uppercase">@historico.NomeFornecedor</span>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12">
-                <span>@historico.NomeFornecedor</span>
+        <div class="row form-group">
+            <div class="col-6">
+                <span class="font-weight-bold">Data da Compra: </span><span>@(historico.DataCompra == null ? "(Não Realizado)" : historico.DataCompra.ToString("dd/MM/yyyy"))</span>
+            </div>
+            <div class="col-6">
+                <span class="font-weight-bold">Data do Agendamento: </span><span>@(historico.DataAgenda == null ? "(Não Realizado)" : historico.DataAgenda.ToString("dd/MM/yyyy"))</span>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <span>Data:</span> <span>@historico.DataContato</span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-6">
-                <span>Data da Compra:</span><span>@historico.DataCompra</span>
-            </div>
-            <div class="col-xs-6">
-                <span>Data do Agendamento:</span><span>@historico.DataAgenda</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <span>Negociação</span>
+        <div class="row form-group">
+            <div class="col-12">
+                <span class="font-weight-bold">Negociação</span>
                 <span>@historico.Negociacao</span>
             </div>
         </div>
 
-        <hr />
-
+        <hr class="border-dark"/>
     }
 
 </div>

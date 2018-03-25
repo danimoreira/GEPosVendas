@@ -18,7 +18,8 @@ namespace GEPosVendas.Controllers
 
         // GET: Tarefas
         public ActionResult Index()
-        {   
+        {
+            this.UpdateBag();
             ViewBag.Vendedores = new Consultas().GetVendedores();            
             ViewBag.Clientes = new Consultas().GetClientes();
             
@@ -30,6 +31,7 @@ namespace GEPosVendas.Controllers
         
         public ActionResult RealizarTarefas(int? idCliente, int? idFornecedor)
         {
+            this.UpdateBag();
             if (!idCliente.HasValue)
                 return RedirectToAction("Index");
 
@@ -47,6 +49,7 @@ namespace GEPosVendas.Controllers
         [HttpPost]
         public ActionResult Salvar(Contatos contato)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Add(contato);
@@ -59,10 +62,17 @@ namespace GEPosVendas.Controllers
         [HttpGet]
         public ViewResult Detalhar(int? idcliente)
         {
+            this.UpdateBag();
             if (idcliente.HasValue)
                 ViewBag.Fornecedores = new Consultas().GetFornecedoresPorCliente(idcliente);
 
             return View();
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
         }
 
 

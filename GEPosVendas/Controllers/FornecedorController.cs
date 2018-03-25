@@ -18,6 +18,7 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor
         public ActionResult Index()
         {
+            this.UpdateBag();
             List<Fornecedor> fornecedores = Service.List();
             return View(fornecedores);
         }
@@ -25,6 +26,7 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Details/5
         public ActionResult Details(int id)
         {
+            this.UpdateBag();
             Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
             return View(fornecedor);
         }
@@ -32,6 +34,7 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Create
         public ActionResult Create()
         {
+            this.UpdateBag();
             return View();
         }
 
@@ -41,6 +44,7 @@ namespace GEPosVendas.Controllers
         {
             try
             {
+                this.UpdateBag();
                 // TODO: Add insert logic here
                 Fornecedor fornecedor = new Fornecedor();
 
@@ -61,6 +65,7 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Edit/5
         public ActionResult Edit(int id)
         {
+            this.UpdateBag();
             Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
             return View(fornecedor);
         }
@@ -71,6 +76,7 @@ namespace GEPosVendas.Controllers
         {
             try
             {
+                this.UpdateBag();
                 // TODO: Add update logic here
                 Fornecedor fornecedor = new Fornecedor();
 
@@ -92,6 +98,7 @@ namespace GEPosVendas.Controllers
         // GET: Fornecedor/Delete/5
         public ActionResult Delete(int id)
         {
+            this.UpdateBag();
             Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
             return View(fornecedor);
         }
@@ -102,6 +109,7 @@ namespace GEPosVendas.Controllers
         {
             try
             {
+                this.UpdateBag();
                 // TODO: Add delete logic here
                 Fornecedor fornecedor = Service.List().Where(x => x.Id == id).FirstOrDefault();
 
@@ -113,6 +121,12 @@ namespace GEPosVendas.Controllers
             {
                 return View();
             }
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
         }
     }
 }

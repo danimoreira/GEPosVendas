@@ -22,12 +22,14 @@ namespace GEPosVendas.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            this.UpdateBag();
             var cliente = Service.List();
             return View(cliente);
         }
 
         public ActionResult Pesquisar(string termo)
         {
+            this.UpdateBag();
             if (string.IsNullOrEmpty(termo))
                 return HttpNotFound();
 
@@ -39,6 +41,7 @@ namespace GEPosVendas.Controllers
         // GET: Cliente/Details/5
         public ActionResult Details(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -54,6 +57,7 @@ namespace GEPosVendas.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
+            this.UpdateBag();
             ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");            
             ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
             ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
@@ -67,6 +71,7 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao,IdVendedor,NomeComprador")] Cliente cliente)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Add(cliente);
@@ -82,6 +87,7 @@ namespace GEPosVendas.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,9 +97,9 @@ namespace GEPosVendas.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");
-            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
-            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
+            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Estado.Id );
+            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Regiao.Id);
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.Vendedor.Id);
             return View(cliente);
         }
 
@@ -104,20 +110,22 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,Cnpj,InscricaoEstadual,TelefonePrincipal,TelefoneContato,EmailPrincipal,EmailNFe,Observacao,Logradouro,Numero,Bairro,Cep,Cidade,IdEstado,IdRegiao,IdVendedor,NomeComprador")] Cliente cliente)
         {
+            this.UpdateBag();
             if (ModelState.IsValid)
             {
                 Service.Update(cliente);
                 return RedirectToAction("Index");
             }
-            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla");
-            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao");
-            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome");
+            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla", cliente.Estado);
+            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Regiao);
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.Vendedor);
             return View(cliente);
         }
 
         // GET: Cliente/Delete/5
         public ActionResult Delete(int? id)
         {
+            this.UpdateBag();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,9 +143,16 @@ namespace GEPosVendas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            this.UpdateBag();
             Cliente cliente = Service.GetById(id);
             Service.Delete(cliente);
             return RedirectToAction("Index");
-        }        
+        }
+
+        public void UpdateBag()
+        {
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
+        }
     }
 }
