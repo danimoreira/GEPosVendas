@@ -46,9 +46,7 @@ namespace GEPosVendas.Controllers
             HttpCookie cookieVendedorLogado = new HttpCookie("idVendedorLogado", usuarioDados.Id.ToString());
             Response.Cookies.Add(cookieVendedorLogado);
 
-            returnUrl = returnUrl ?? "/";
-
-            return Redirect(returnUrl);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult LogOut()

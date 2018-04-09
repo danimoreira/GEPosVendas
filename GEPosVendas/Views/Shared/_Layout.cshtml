@@ -9,7 +9,8 @@
 
     <title>GE Representações Ltda.</title>
 
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/BundleStyles/styles")
+    
 
 </head>
 
@@ -25,27 +26,27 @@
                     @Html.ActionLink("Tarefas", "Index", "Tarefas", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Vendedor", "Index", "Vendedor", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Fornecedor", "Index", "Fornecedor", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Região", "Index", "Regiao", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Estado", "Index", "Estado", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    
+
                     @Html.ActionLink("Histórico", "Index", "Historico", new { }, new { @class = "nav-link" })
                 </li>
             </ul>
@@ -62,17 +63,17 @@
         </div>
     </nav>
 
-    <main role="main" class="" style="height: 85%; width: 80%; margin-bottom: 1%;" >
+    <main role="main" class="" style="height: 85%; width: 80%; margin-bottom: 1%;">
         @RenderBody()
     </main><!-- /.container -->
-
     @*<div class="row fixed-bottom">
-        <div class="col-12">
-            <p>footer</p>
-        </div>
-    </div>*@
+            <div class="col-12">
+                <p>footer</p>
+            </div>
+        </div>*@
 
-    @Scripts.Render("~/bundles/layout/js")
+    @Scripts.Render("~/bundles/layout/script")
+
 
 </body>
 </html>

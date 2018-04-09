@@ -10,34 +10,34 @@ namespace GEPosVendas
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css",
-                        "~/Content/bootstrap-grid.css",
-                        "~/Content/bootstrap-reboot.css",
+            bundles.Add(new StyleBundle("~/BundleStyles/styles").Include(
+                        "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap-grid.min.css",
+                        "~/Content/bootstrap-reboot.min.css",
                         "~/Content/DataTables/css/dataTables.jqueryui.min.css",
-                        "~/Content/bootstrap-select.css",
+                        "~/Content/bootstrap-select.min.css",
                         "~/Content/font-awesome.min.css",
-                        "~/Content/toastr.css",
+                        "~/Content/toastr.min.css",
                         "~/Content/stater-template.css",
                         "~/Content/signin.css",
                         "~/Content/style.css",
-                        "~/Content/bootstrap-datepicker.css",
-                        "~/Content/bootstrap-datepicker3.css",
+                        "~/Content/bootstrap-datepicker.min.css",
+                        "~/Content/bootstrap-datepicker.standalone.min.css",
+                        "~/Content/bootstrap-datepicker3.min.css",
                         "~/Content/_Layout.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/layout/js").Include(
+            bundles.Add(new ScriptBundle("~/bundles/layout/script").Include(
                         "~/Scripts/modernizr-*",
                         "~/Scripts/jquery-3.0.0.js",
                         "~/Scripts/bootstrap.bundle.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/bootstrap-dialog.js",
                         "~/Scripts/bootstrap-select.js",
                         "~/Scripts/bootstrap-datepicker.js",
                         "~/Scripts/toastr.js",
                         "~/Scripts/popper-utils.js",
-                        "~/Scripts/popper.js",                        
-                        "~/Scripts/Views/Tarefas.js"));            
+                        "~/Scripts/popper.js",
+                        "~/Scripts/Tarefas.js"));            
         }
     }
 }

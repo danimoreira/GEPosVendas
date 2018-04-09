@@ -38,13 +38,13 @@ namespace GEPosVendas.Controllers
             {
                 Text = x.RazaoSocial,
                 Value = x.Id.ToString()
-            }).ToList();            
+            }).ToList().OrderBy(y => y.Text);            
 
             ViewBag.idVendedor = VendedorService.List().Select(x => new SelectListItem()
             {
                 Text = x.Nome,
                 Value = x.Id.ToString()
-            }).ToList();
+            }).ToList().OrderBy(y => y.Text);
         }
     }
 }
