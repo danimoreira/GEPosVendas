@@ -17,7 +17,7 @@
     @Styles.Render("~/BundleStyles/styles")    
 </head>
 <body class="text-center">
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-signin" }))
+    @using (Html.BeginForm("Login", "Login", new { returnUrl = Request["ReturnUrl"] },FormMethod.Post, new { @class = "form-signin" }))
     {
         <h1 class="h3 mb-3 font-weight-normal"><img src="~/Content/img/LOGO GE LIMPA1.jpg" alt="GE Representações" /></h1>
         <span class="text-danger">@Html.ValidationMessageFor(x => x.Usuario)</span>

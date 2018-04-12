@@ -16,8 +16,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <span class="text-warning text-sm-left" style="padding-right: 100px">GE Representações Ltda.</span>
+    <nav class="navbar navbar-expand-md  navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <span class="text-warning text-sm-left" style="padding-right: 0px">GE Representações Ltda.</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"></button>
 
         <div class="collapse navbar-collapse">
@@ -50,11 +50,11 @@
                     @Html.ActionLink("Histórico", "Index", "Historico", new { }, new { @class = "nav-link" })
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" action="@Url.Action("Pesquisar", "Cliente")">
-                <input class="form-control mr-sm-2" style="width:300px" type="text" name="termo" placeholder="Pesquise uma empresa" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar Empresas</button>
+            <form class="form-inline col-sm-4" action="@Url.Action("Pesquisar", "Cliente")">
+                <input class="form-control col-sm-7" type="text" name="termo" placeholder="Pesquise uma empresa" aria-label="Search">
+                <button class="btn btn-outline-success col-sm-5" type="submit">Buscar Empresas</button>
             </form>
-            <div class="float-right text-right" style="padding-left: 100px;">
+            <div class="float-right text-right" style="padding-left: 0px;">
                 <span class="text-white">@DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</span><br />
                 <span class="text-muted"><i class="fa fa-user"></i> @ViewBag.Usuario</span>
                 <span class="text-white">|</span>
@@ -63,7 +63,7 @@
         </div>
     </nav>
 
-    <main role="main" class="" style="height: 85%; width: 80%; margin-bottom: 1%;">
+    <main role="main" style="height: 85%; width: 85%; margin-bottom: 1%;">
         @RenderBody()
     </main><!-- /.container -->
     @*<div class="row fixed-bottom">

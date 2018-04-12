@@ -45,6 +45,9 @@ namespace GEPosVendas.Controllers
                 Text = x.Nome,
                 Value = x.Id.ToString()
             }).ToList().OrderBy(y => y.Text);
+
+            ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
+            ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
         }
     }
 }

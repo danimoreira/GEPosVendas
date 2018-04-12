@@ -19,14 +19,17 @@ namespace GEPosVendas.Controllers
         private LoginService Service = new LoginService(new LoginRepository());
 
         // GET: Login
-        public ActionResult Index()
+        public ActionResult Index(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl ?? "/GEPV/Home";
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(LoginDto loginDto, string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
+
             var usuarioDados = Service.Logar(loginDto);
 
             if (usuarioDados == null)
