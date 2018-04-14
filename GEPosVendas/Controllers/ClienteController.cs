@@ -97,9 +97,9 @@ namespace GEPosVendas.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Estado.Id );
-            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Regiao.Id);
-            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.Vendedor.Id);
+            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.IdEstado );
+            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.IdRegiao);
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.IdVendedor);
             return View(cliente);
         }
 
@@ -116,9 +116,9 @@ namespace GEPosVendas.Controllers
                 Service.Update(cliente);
                 return RedirectToAction("Index");
             }
-            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla", cliente.Estado);
-            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.Regiao);
-            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.Vendedor);
+            ViewBag.IdEstado = new SelectList(EstadoService.List().OrderBy(m => m.Sigla), "Id", "Sigla", cliente.IdEstado);
+            ViewBag.IdRegiao = new SelectList(RegiaoService.List().OrderBy(m => m.Descricao), "Id", "Descricao", cliente.IdRegiao);
+            ViewBag.IdVendedor = new SelectList(VendedorService.List().OrderBy(m => m.Nome), "Id", "Nome", cliente.IdVendedor);
             return View(cliente);
         }
 
