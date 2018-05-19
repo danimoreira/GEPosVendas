@@ -9,7 +9,7 @@
 
     <title>GE Representações Ltda.</title>
 
-    @Styles.Render("~/BundleStyles/styles")
+    @Styles.Render("~/BundleStyles/cssfiles")
     
 
 </head>
@@ -17,7 +17,9 @@
 <body>
 
     <nav class="navbar navbar-expand-md  navbar-expand-sm navbar-dark bg-dark fixed-top">
-        <span class="text-warning text-sm-left" style="padding-right: 0px">GE Representações Ltda.</span>
+        <span class="text-warning text-sm-left" style="padding-right: 0px">
+            <img src="~/Content/img/logo_ge_topo.jpg" alt="GE Representações Ltda." style="border-radius: 50%;"/>
+        </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"></button>
 
         <div class="collapse navbar-collapse">
@@ -65,15 +67,15 @@
 
     <main role="main" style="height: 85%; width: 85%; margin-bottom: 1%;">
         @RenderBody()
-    </main><!-- /.container -->
-    @*<div class="row fixed-bottom">
-            <div class="col-12">
-                <p>footer</p>
-            </div>
-        </div>*@
+    </main>
 
-    @Scripts.Render("~/bundles/layout/script")
-
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap-select.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/Tarefas.js"></script>
 
 </body>
 </html>

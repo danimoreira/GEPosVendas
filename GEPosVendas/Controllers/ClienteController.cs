@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using GEPV.Domain.Entities;
@@ -27,13 +29,30 @@ namespace GEPosVendas.Controllers
             return View(cliente);
         }
 
+        static string RemoveDiacritics(string text)
+        {
+            string formD = text.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char ch in formD)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(ch);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(ch);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
+
         public ActionResult Pesquisar(string termo)
         {
             this.UpdateBag();
             if (string.IsNullOrEmpty(termo))
-                return HttpNotFound();
+                return View(new List<Cliente>());
 
-            List<Cliente> cliente = Service.List().Where(x => x.RazaoSocial.ToUpper().Contains(termo.ToUpper()) || x.Cnpj.Contains(termo) || x.Regiao.Descricao.Contains(termo)).ToList();
+            List<Cliente> cliente = Service.List().Where(x => RemoveDiacritics(x.RazaoSocial.ToUpper()).Contains(RemoveDiacritics(termo.ToUpper()))  || x.Cnpj.Contains(termo) || x.Regiao.Descricao.Contains(termo)).ToList();
 
             return View(cliente);
         }

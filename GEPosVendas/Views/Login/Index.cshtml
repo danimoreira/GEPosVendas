@@ -14,10 +14,10 @@
 
     @*<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
         <link href="@Url.Content("~/Content/signin.css")" rel="stylesheet">*@
-    @Styles.Render("~/BundleStyles/styles")    
+    @Styles.Render("~/BundleStyles/cssfiles")    
 </head>
 <body class="text-center">
-    @using (Html.BeginForm("Login", "Login", new { returnUrl = Request["ReturnUrl"] },FormMethod.Post, new { @class = "form-signin" }))
+    @using (Html.BeginForm("Login", "Login", new { returnUrl = Request["ReturnUrl"] }, FormMethod.Post, new { @class = "form-signin" }))
     {
         <h1 class="h3 mb-3 font-weight-normal"><img src="~/Content/img/LOGO GE LIMPA1.jpg" alt="GE Representações" /></h1>
         <span class="text-danger">@Html.ValidationMessageFor(x => x.Usuario)</span>
@@ -25,10 +25,20 @@
         <input type="text" id="Usuario" name="Usuario" class="form-control" placeholder="Usuário" required>
         <input type="password" id="Senha" name="Senha" class="form-control" placeholder="Senha" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-        <p class="mt-5 mb-3 text-muted">&copy; Daniel Moreira Developer</p>
+        <br />
+        <p>
+            <span class="mt-5 mb-3 text-muted" style="font-size: 12px;">
+                versão 01.000.001
+            </span>
+            <br />
+            <span class="mt-5 mb-3 text-muted" style="font-size: 12px;">
+                &copy;Daniel Moreira Developer
+            </span>
+        </p>
+        
     }
 
-    @Scripts.Render("~/bundles/layout/script")
+    @Scripts.Render("~/bundles/jsfiles")
 
     @*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
         <script src="~/Scripts/bootstrap.min.js"></script>*@

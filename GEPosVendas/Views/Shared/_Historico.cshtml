@@ -7,12 +7,12 @@
             <div class="col-8">
                 <span class="font-weight-bold">Data do Contato: </span> <span>@(historico.DataContato == null ? "(Não Realizado)" : historico.DataContato.ToString("dd/MM/yyyy"))</span>
             </div>
-            <div class="col-4">
+            @*<div class="col-4">
                 <span class="font-weight-bold">Vendedor: </span> <span class="text-uppercase">@historico.NomeVendedor</span>
-            </div>
+            </div>*@
         </div>
 
-        <div class="row form-group">
+        @*<div class="row form-group">
             <div class="col-12">
                 <span class="font-weight-bold">Cliente: </span> <span class="text-uppercase">@historico.NomeCliente</span>
             </div>
@@ -31,7 +31,7 @@
             <div class="col-6">
                 <span class="font-weight-bold">Data do Agendamento: </span><span>@(historico.DataAgenda == null ? "(Não Realizado)" : historico.DataAgenda.ToString("dd/MM/yyyy"))</span>
             </div>
-        </div>
+        </div>*@
         <div class="row form-group">
             <div class="col-12">
                 <span class="font-weight-bold">Negociação</span>

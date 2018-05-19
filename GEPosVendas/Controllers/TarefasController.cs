@@ -49,6 +49,9 @@ namespace GEPosVendas.Controllers
         [HttpPost]
         public ActionResult Salvar(Contatos contato)
         {
+            if (contato.DataContato == DateTime.MinValue)
+                contato.DataContato = DateTime.Now;
+            
             this.UpdateBag();
             if (ModelState.IsValid)
             {

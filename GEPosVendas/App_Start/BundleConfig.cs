@@ -10,7 +10,7 @@ namespace GEPosVendas
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/BundleStyles/styles").Include(
+            bundles.Add(new StyleBundle("~/BundleStyles/cssfiles").Include(
                         "~/Content/bootstrap.min.css",
                         "~/Content/bootstrap-grid.min.css",
                         "~/Content/bootstrap-reboot.min.css",
@@ -26,17 +26,13 @@ namespace GEPosVendas
                         "~/Content/bootstrap-datepicker3.min.css",
                         "~/Content/_Layout.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/layout/script").Include(
-                        "~/Scripts/modernizr-*",
-                        "~/Scripts/jquery-3.0.0.js",
-                        "~/Scripts/bootstrap.bundle.js",
-                        "~/Scripts/jquery.validate.js",
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/bootstrap-select.js",
-                        "~/Scripts/bootstrap-datepicker.js",
-                        "~/Scripts/toastr.js",
-                        "~/Scripts/popper-utils.js",
-                        "~/Scripts/popper.js",
+            bundles.Add(new ScriptBundle("~/bundles/jsfiles").Include(
+                        "~/Scripts/jquery-3.0.0.min.js",
+                        "~/Scripts/bootstrap.bundle.min.js",
+                        "~/Scripts/jquery.validate.min.js",
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/bootstrap-select.min.js",
+                        "~/Scripts/bootstrap-datepicker.min.js",
                         "~/Scripts/Tarefas.js"));            
         }
     }

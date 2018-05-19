@@ -16,7 +16,7 @@
                     <div class="row form-group">
                         <div class="col-12">
                             <label class="control-label">Data Contato:</label>
-                            <input type="datetime" class="form-control" id="DataContato" name="DataContato" value="@DateTime.Now.ToString("dd/MM/yyyy")"/>
+                            <input type="datetime" class="form-control" id="DataContato" name="DataContato" value="@DateTime.Now.ToString("dd/MM/yyyy")" disabled />
                         </div>
 
                         <div class="col-12">
@@ -26,12 +26,26 @@
 
                         <div class="col-6">
                             <label class="control-label">Realizar próximo contato:</label>
-                            <input type="datetime" class="form-control datepicker" id="DataAgenda" name="DataAgenda" />
+                            <input type="datetime" class="form-control datepicker" id="DataAgenda" name="DataAgenda" onkeyup="
+                                                                                                                        var v = this.value;
+                                                                                                                        if (v.match(/^\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        }"
+                                                                                                                    maxlength="10" />
                         </div>
 
                         <div class="col-6">
                             <label class="control-label">Data da Compra:</label>
-                            <input type="datetime" class="form-control datepicker" id="DataCompra" name="DataCompra" />
+                            <input type="datetime" class="form-control datepicker" id="DataCompra" name="DataCompra" onkeyup="
+                                                                                                                        var v = this.value;
+                                                                                                                        if (v.match(/^\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        }"
+                                                                                                                    maxlength="10" />
                         </div>
 
                     </div>
