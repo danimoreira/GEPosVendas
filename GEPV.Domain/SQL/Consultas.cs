@@ -26,7 +26,7 @@ namespace GEPV.Domain.SQL
         {
             string SQL = @"SELECT  CLIENTE.Id IdCliente,
 		                            CASE WHEN SUM(CONT_ATRASO) > 0 THEN 'bg-danger'
-                                     WHEN SUM(CONT_DIA) > 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-warning'
+                                     WHEN SUM(CONT_DIA) > 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
                                      WHEN SUM(CONT_REALIZADO) > 0 AND SUM(CONT_DIA) = 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
                                      WHEN CONTATOS.ID_CLIENTE IS NULL THEN 'bg-light'
                                      ELSE 'bg-info' END CorCliente,
@@ -71,7 +71,7 @@ namespace GEPV.Domain.SQL
         {
             string SQL = string.Format(@"SELECT CLIENTE.ID IDCLIENTE,
                                     CASE WHEN DATE(MAX(CONTATOS.DATA_AGENDA)) > DATE(NOW()) AND DATE(MAX(CONTATOS.DATA_CONTATO)) = DATE(NOW()) THEN 'bg-success'
-		                            WHEN DATE(MAX(CONTATOS.DATA_AGENDA)) = DATE(NOW()) THEN 'bg-warning'
+		                            WHEN DATE(MAX(CONTATOS.DATA_AGENDA)) = DATE(NOW()) THEN 'bg-success'
 		                            WHEN DATE(MAX(CONTATOS.DATA_AGENDA)) < DATE(NOW()) THEN 'bg-danger'
 		                            WHEN DATE(MAX(CONTATOS.DATA_AGENDA)) IS NULL THEN 'bg-light'
 		                            ELSE 'bg-info'
