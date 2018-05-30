@@ -16,7 +16,7 @@ namespace GEPV.Domain.Interfaces.Repository
 
         TEntity GetById(int id);
 
-        IQueryable<TEntity> List();
+        List<TEntity> List();
 
         void SaveChanges();
 

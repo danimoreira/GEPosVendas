@@ -35,7 +35,7 @@ namespace GEPosVendas.Controllers
             if (!idCliente.HasValue)
                 return RedirectToAction("Index");
 
-            ViewBag.Historico = new Consultas().GetHistoricoContatos(idCliente, null);
+            ViewBag.Historico = new Consultas().GetHistoricoContatos(idCliente, null, idFornecedor);
             ViewBag.IdCliente = idCliente;
             ViewBag.IdVendedor = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
             if (ViewBag.IdVendedor == null)

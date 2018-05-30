@@ -25,7 +25,7 @@ namespace GEPosVendas.Controllers
 
         public ActionResult Pesquisar(int? idCliente, int? idVendedor)
         {
-            ViewBag.Historico = new Consultas().GetHistoricoContatos(idCliente, idVendedor);
+            ViewBag.Historico = new Consultas().GetHistoricoContatos(idCliente, idVendedor, null);
 
             UpdateBag();
 

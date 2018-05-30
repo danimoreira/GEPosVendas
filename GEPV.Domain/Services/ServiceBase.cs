@@ -28,27 +28,22 @@ namespace GEPV.Domain.Services
             _repository.Delete(obj);
         }
 
-        public virtual void Delete(int id)
+        public override void Delete(int id)
         {
             _repository.Delete(id);
         }
-
-        public virtual void Dispose()
-        {
-            _repository.Dispose();
-        }
-
-        public virtual bool Exists(int id)
+        
+        public override bool Exists(int id)
         {
             return _repository.Exists(id);
         }
 
-        public virtual TEntity GetById(int id)
+        public override TEntity GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public virtual List<TEntity> List()
+        public override List<TEntity> List()
         {
             return _repository.List().ToList();
         }

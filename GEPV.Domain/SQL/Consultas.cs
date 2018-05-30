@@ -108,10 +108,11 @@ namespace GEPV.Domain.SQL
             return db.Database.SqlQuery<TarefasFornecedores>(SQL).ToList();
         }
 
-        public List<HistoricoDTO> GetHistoricoContatos(int? IdCliente, int? IdVendedor)
+        public List<HistoricoDTO> GetHistoricoContatos(int? IdCliente, int? IdVendedor, int? idFornecedor)
         {
             IdCliente = IdCliente ?? 0;
             IdVendedor = IdVendedor ?? 0;
+            idFornecedor = idFornecedor ?? 0;
 
             string SQL = string.Format(@"SELECT 
 	                                        CLIENTE.ID IdCliente,
@@ -130,7 +131,8 @@ namespace GEPV.Domain.SQL
                                         INNER JOIN FORNECEDOR ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID
                                         WHERE (CONTATOS.ID_VENDEDOR = {0} OR {0} = 0) 
                                         AND (CONTATOS.ID_CLIENTE = {1} OR {1} = 0)
-                                        ORDER BY DATA_CONTATO DESC", IdVendedor, IdCliente);
+                                        AND (CONTATOS.ID_FORNECEDOR = {2} OR {2} = 0)
+                                        ORDER BY DATA_CONTATO DESC", IdVendedor, IdCliente, idFornecedor);
 
             return db.Database.SqlQuery<HistoricoDTO>(SQL).ToList();
         }

@@ -48,9 +48,9 @@ namespace GEPV.Domain.Repository
             return db.Set<TEntity>().Find(id);
         }
 
-        public virtual IQueryable<TEntity> List()
+        public virtual List<TEntity> List()
         {
-            return db.Set<TEntity>();
+            return db.Set<TEntity>().ToList();
         }
 
         public virtual void SaveChanges()
