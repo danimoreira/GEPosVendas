@@ -48,6 +48,7 @@ namespace GEPosVendas.Controllers
 
             ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
             ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
+            ViewBag.DataAtual = new Consultas().GetDataHoraAtual().ToString("dd/MM/yyyy");
         }
     }
 }

@@ -24,12 +24,12 @@ namespace GEPV.Domain.SQL
 
         public List<TarefasClientes> GetClientes()
         {
-            string SQL = @"SELECT  CLIENTE.Id IdCliente,
+            string SQL = @"SELECT DISTINCT CLIENTE.Id IdCliente,
 		                            CASE WHEN SUM(CONT_ATRASO) > 0 THEN 'bg-danger'
                                      WHEN SUM(CONT_DIA) > 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
                                      WHEN SUM(CONT_REALIZADO) > 0 AND SUM(CONT_DIA) = 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
-                                     WHEN CONTATOS.ID_CLIENTE IS NULL THEN 'bg-light'
-                                     ELSE 'bg-info' END CorCliente,
+                                     WHEN MAX(CONTATOS.DATA_CONTATO) IS NOT NULL THEN 'bg-info'
+		                             ELSE 'bg-light' END CorCliente,
 		                            CLIENTE.RAZAO_SOCIAL Nome,
 		                            REGIAO.DESCRICAO RegiaoDescricao,
 		                            MAX(CONTATOS.DATA_CONTATO) UltimoContato,
@@ -62,7 +62,14 @@ namespace GEPV.Domain.SQL
 		                             CLIENTE.TELEFONE_PRINCIPAL,
 		                             CLIENTE.TELEFONE_CONTATO,
 		                             CLIENTE.NOME_COMPRADOR,
-		                             CLIENTE.EMAIL_PRINCIPAL";
+		                             CLIENTE.EMAIL_PRINCIPAL
+                            ORDER BY (CASE WHEN SUM(CONT_ATRASO) > 0 THEN 0
+		                             WHEN SUM(CONT_DIA) > 0 AND SUM(CONT_ATRASO) = 0 THEN 1
+		                             WHEN SUM(CONT_REALIZADO) > 0 AND SUM(CONT_DIA) = 0 AND SUM(CONT_ATRASO) = 0 THEN 1
+		                             WHEN MAX(CONTATOS.DATA_CONTATO) IS NOT NULL THEN 2
+		                             ELSE 3 END) ASC, 
+                                     MIN(CONTATOS.DATA_AGENDA), 
+                                     CLIENTE.RAZAO_SOCIAL";
 
             return db.Database.SqlQuery<TarefasClientes>(SQL).ToList();
         }
@@ -122,9 +129,16 @@ namespace GEPV.Domain.SQL
                                         INNER JOIN VENDEDOR ON CONTATOS.ID_VENDEDOR = VENDEDOR.ID
                                         INNER JOIN FORNECEDOR ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID
                                         WHERE (CONTATOS.ID_VENDEDOR = {0} OR {0} = 0) 
-                                        AND (CONTATOS.ID_CLIENTE = {1} OR {1} = 0)", IdVendedor, IdCliente);
+                                        AND (CONTATOS.ID_CLIENTE = {1} OR {1} = 0)
+                                        ORDER BY DATA_CONTATO DESC", IdVendedor, IdCliente);
 
             return db.Database.SqlQuery<HistoricoDTO>(SQL).ToList();
-        }        
+        }
+        
+        public DateTime GetDataHoraAtual()
+        {
+            string sql = string.Format(@"SELECT NOW()");
+            return db.Database.SqlQuery<DateTime>(sql).FirstOrDefault();
+        }
     }
 }

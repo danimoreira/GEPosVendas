@@ -57,7 +57,7 @@
                 <button class="btn btn-outline-success col-sm-5" type="submit">Buscar Empresas</button>
             </form>
             <div class="float-right text-right" style="padding-left: 0px;">
-                <span class="text-white">@DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</span><br />
+                <span class="text-muted">@ViewBag.DataAtual</span><br />
                 <span class="text-muted"><i class="fa fa-user"></i> @ViewBag.Usuario</span>
                 <span class="text-white">|</span>
                 @Html.ActionLink("Sair", "LogOut", "Login", new { }, new { @class = "text-warning" })

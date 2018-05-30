@@ -2,6 +2,7 @@
 using GEPV.Domain.Interfaces.Services;
 using GEPV.Domain.Repository;
 using GEPV.Domain.Services;
+using GEPV.Domain.SQL;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -127,6 +128,7 @@ namespace GEPosVendas.Controllers
         {
             ViewBag.Usuario = HttpContext.Request.Cookies["displayName"].Value;
             ViewBag.IdVendedorLogado = Convert.ToInt32(HttpContext.Request.Cookies["idVendedorLogado"].Value);
+            ViewBag.DataAtual = new Consultas().GetDataHoraAtual().ToString("dd/MM/yyyy");
         }
     }
 }
