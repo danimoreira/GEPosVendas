@@ -24,6 +24,8 @@ namespace GEPosVendas
                         "~/Content/bootstrap-datepicker.min.css",
                         "~/Content/bootstrap-datepicker.standalone.min.css",
                         "~/Content/bootstrap-datepicker3.min.css",
+                        "~/Content/alertify/alertify.core.css",
+                        "~/Content/alertify/alertify.default.css",
                         "~/Content/_Layout.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jsfiles").Include(

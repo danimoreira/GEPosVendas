@@ -171,6 +171,7 @@
     <Compile Include="Services\RegiaoService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="SQL\Consultas.cs" />
+    <Compile Include="Util\Utilitario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\MySqlCommand.xml" />

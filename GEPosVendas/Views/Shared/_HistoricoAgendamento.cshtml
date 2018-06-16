@@ -1,0 +1,26 @@
+﻿<div class="container">
+
+    @foreach (var historico in Model)
+    {
+        <div class="container">
+            <div class="row form-group">
+                <div class="col-8">
+                    <span class="font-weight-bold">Data do Contato: </span> <span>@(historico.DataContato == null ? "(Não Realizado)" : historico.DataContato.ToString("dd/MM/yyyy"))</span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-8">
+                    <span class="font-weight-bold">Negociação</span>
+                    <span>@historico.Negociacao</span>
+                </div>
+                <div class="col-4 text-right">
+                    <a class="btn btn-danger text-white" data-url="@Url.Action("ExcluirHistorico", "Tarefas")" onclick="tarefas.ExcluirHistórico(this, @historico.IdHistorico, @historico.IdCliente, @historico.IdFornecedor)">Excluir</a>                    
+                    <a class="btn btn-primary text-white" data-url="@Url.Action("EditarHistorico", "Tarefas", new { idHistorico = historico.IdHistorico, idCliente = historico.IdCliente, idFornecedor = historico.IdFornecedor })" onclick="tarefas.EditarHistorico(this)">Alterar </a>
+                </div>
+            </div>
+            <hr class="border-dark" />
+        </div>
+    }
+
+</div>

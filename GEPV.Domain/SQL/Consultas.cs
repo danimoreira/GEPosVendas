@@ -28,6 +28,7 @@ namespace GEPV.Domain.SQL
 		                            CASE WHEN SUM(CONT_ATRASO) > 0 THEN 'bg-danger'
                                      WHEN SUM(CONT_DIA) > 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
                                      WHEN SUM(CONT_REALIZADO) > 0 AND SUM(CONT_DIA) = 0 AND SUM(CONT_ATRASO) = 0 THEN 'bg-success'
+                                     WHEN MAX(DATE(CONTATOS.DATA_CONTATO)) = DATE(NOW()) THEN 'bg-success'
                                      WHEN MAX(CONTATOS.DATA_CONTATO) IS NOT NULL THEN 'bg-info'
 		                             ELSE 'bg-light' END CorCliente,
 		                            CLIENTE.RAZAO_SOCIAL Nome,
@@ -115,6 +116,7 @@ namespace GEPV.Domain.SQL
             idFornecedor = idFornecedor ?? 0;
 
             string SQL = string.Format(@"SELECT 
+                                            CONTATOS.ID IdHistorico,
 	                                        CLIENTE.ID IdCliente,
                                             CLIENTE.RAZAO_SOCIAL NomeCliente,
                                             FORNECEDOR.ID IdFornecedor,
@@ -129,14 +131,14 @@ namespace GEPV.Domain.SQL
                                         INNER JOIN CLIENTE ON CONTATOS.ID_CLIENTE = CLIENTE.ID
                                         INNER JOIN VENDEDOR ON CONTATOS.ID_VENDEDOR = VENDEDOR.ID
                                         INNER JOIN FORNECEDOR ON CONTATOS.ID_FORNECEDOR = FORNECEDOR.ID
-                                        WHERE (CONTATOS.ID_VENDEDOR = {0} OR {0} = 0) 
+                                        WHERE (CLIENTE.ID_VENDEDOR = {0} OR {0} = 0) 
                                         AND (CONTATOS.ID_CLIENTE = {1} OR {1} = 0)
                                         AND (CONTATOS.ID_FORNECEDOR = {2} OR {2} = 0)
                                         ORDER BY DATA_CONTATO DESC", IdVendedor, IdCliente, idFornecedor);
 
             return db.Database.SqlQuery<HistoricoDTO>(SQL).ToList();
         }
-        
+
         public DateTime GetDataHoraAtual()
         {
             string sql = string.Format(@"SELECT NOW()");

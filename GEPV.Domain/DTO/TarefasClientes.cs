@@ -19,6 +19,6 @@ namespace GEPV.Domain.DTO
         public string Contato { get; set; }
         public string Responsavel { get; set; }
         public string Email { get; set; }
-        public int? IdVendedor { get; set; }
+        public int? IdVendedor { get; set; }        
     }
 }

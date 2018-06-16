@@ -16,7 +16,7 @@
             <div class="col-12">
                 <span class="font-weight-bold">Cliente: </span> <span class="text-uppercase">@historico.NomeCliente</span>
             </div>
-        </div>
+        </div>*@
 
         <div class="row form-group">
             <div class="col-12">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="row form-group">
+        @*<div class="row form-group">
             <div class="col-6">
                 <span class="font-weight-bold">Data da Compra: </span><span>@(historico.DataCompra == null ? "(Não Realizado)" : historico.DataCompra.ToString("dd/MM/yyyy"))</span>
             </div>
@@ -33,10 +33,14 @@
             </div>
         </div>*@
         <div class="row form-group">
-            <div class="col-12">
+            <div class="col-8">
                 <span class="font-weight-bold">Negociação</span>
                 <span>@historico.Negociacao</span>
             </div>
+            @*<div class="col-4">
+                <span class="btn btn-outline-primary"><i class="fa fa-edit"></i></span>
+                <span class="btn btn-outline-danger"><i class="fa fa-trash"></i></span>
+            </div>*@
         </div>
 
         <hr class="border-dark" />

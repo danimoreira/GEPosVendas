@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="">
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
 
     <title>GE Representações Ltda.</title>
 
     @Styles.Render("~/BundleStyles/cssfiles")
-    
+
 
 </head>
 
@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-md  navbar-expand-sm navbar-dark bg-dark fixed-top">
         <span class="text-warning text-sm-left" style="padding-right: 0px">
-            <img src="~/Content/img/logo_ge_topo.jpg" alt="GE Representações Ltda." style="border-radius: 50%;"/>
+            <img src="~/Content/img/logo_ge_topo.jpg" alt="GE Representações Ltda." style="border-radius: 50%;" />
         </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"></button>
 
@@ -28,33 +28,27 @@
                     @Html.ActionLink("Tarefas", "Index", "Tarefas", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Vendedor", "Index", "Vendedor", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Fornecedor", "Index", "Fornecedor", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Região", "Index", "Regiao", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Estado", "Index", "Estado", new { }, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-
                     @Html.ActionLink("Histórico", "Index", "Historico", new { }, new { @class = "nav-link" })
                 </li>
             </ul>
-            <form class="form-inline col-sm-4" action="@Url.Action("Pesquisar", "Cliente")">
-                <input class="form-control col-sm-7" type="text" name="termo" placeholder="Pesquise uma empresa" aria-label="Search">
-                <button class="btn btn-outline-success col-sm-5" type="submit">Buscar Empresas</button>
+            <form class="form-inline col-sm-4" action="@Url.Action("PesquisarClientes", "Tarefas")">
+                <input class="form-control col-sm-8" type="text" name="termo" placeholder="Digite a Razão Social ou Região" aria-label="Search">
+                <button class="btn btn-outline-success col-sm-4" type="submit">Buscar Clientes</button>
             </form>
             <div class="float-right text-right" style="padding-left: 0px;">
                 <span class="text-muted">@ViewBag.DataAtual</span><br />
@@ -64,6 +58,12 @@
             </div>
         </div>
     </nav>
+
+    <div class="text-white" id="loadingDiv">
+        <i class="fa fa-spinner fa-spin fa-5x" id="loading-spin"></i>
+        <br />
+        <span>Aguarde...</span>
+    </div>
 
     <main role="main" style="height: 85%; width: 85%; margin-bottom: 1%;">
         @RenderBody()
@@ -76,6 +76,8 @@
     <script src="~/Scripts/bootstrap-select.min.js"></script>
     <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
     <script src="~/Scripts/Tarefas.js"></script>
-
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/alertify/alertify.min.js"></script>
+    <script src="~/Scripts/locales/bootstrap-datepicker.pt-BR.min.js" charset="UTF-8"></script>
 </body>
 </html>

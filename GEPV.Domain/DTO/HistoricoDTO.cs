@@ -8,6 +8,7 @@ namespace GEPV.Domain.DTO
 {
     public class HistoricoDTO
     {
+        public int IdHistorico { get; set; }
         public int IdCliente { get; set; }
         public string NomeCliente { get; set; }
         public int IdFornecedor { get; set; }

@@ -42,13 +42,32 @@ namespace GEPV.Domain.Entities
         [Column("DATA_REAGENDA")]
         public DateTime? DataReagenda { get; set; }
         [Column("SITUACAO")]
-        public int Situacao { get; set; }        
+        public int Situacao { get; set; }
 
         [NotMapped]
-        public string DescricaoSitaucao {
+        public string DescricaoSitaucao
+        {
             get
             {
                 return Enums.GetDescription((Enums.Situacao)Situacao);
+            }
+        }
+
+        [NotMapped]
+        public string DataCompraFormatada
+        {
+            get
+            {
+                return DataCompra.HasValue ? DataCompra.Value.ToString("dd/MM/yyyy") : "";
+            }
+        }
+
+        [NotMapped]
+        public string DataAgendaFormatada
+        {
+            get
+            {
+                return DataAgenda.HasValue ? DataAgenda.Value.ToString("dd/MM/yyyy") : "";
             }
         }
     }

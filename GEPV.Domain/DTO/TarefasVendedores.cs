@@ -9,5 +9,6 @@ namespace GEPV.Domain.DTO
     {
         public int IdVendedor { get; set; }
         public string NomeVendedor { get; set; }
+        public int? QtdeCliente { get; set; }
     }
 }
