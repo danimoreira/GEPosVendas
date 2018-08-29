@@ -25,7 +25,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-right">                        
-                        <button class="btn btn-dark details" value="Realizar Contato" data-idCliente="@fornecedor.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor" onclick="tarefas.RealizarTarefas(this)">
+                        <button class="btn btn-dark details" value="Realizar Contato" data-idCliente="@fornecedor.IdCliente" data-idFornecedor="@fornecedor.IdFornecedor" data-urlRealizarTarefas="@Url.Action("RealizarTarefas", "Tarefas", new { idCliente = fornecedor.IdCliente, idFornecedor = fornecedor.IdFornecedor })" onclick="tarefas.RealizarTarefas(this)">
                             <i class="fa fa-phone"></i> Agendamento
                         </button>                        
                     </div>

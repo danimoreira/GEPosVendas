@@ -21,7 +21,13 @@
 
                         <div class="col-12 form-group">
                             <label class="control-label">Data Contato:</label>
-                            <input type="datetime" class="form-control" id="DataContato" name="DataContato" value="@DateTime.Now.ToString("dd/MM/yyyy")" disabled />
+                            <input type="datetime" class="form-control datepicker" id="DataContato" name="DataContato" value="@DateTime.Now.ToString("dd/MM/yyyy")" onkeyup="
+                                                                                                                        var v = this.value;
+                                                                                                                        if (v.match(/^\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                                                                                                                            this.value = v + '/';
+                                                                                                                        }" maxlength="10" />
                         </div>
 
                         <div class="col-12 form-group">

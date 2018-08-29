@@ -38,7 +38,8 @@ var Tarefas = function () {
     this.RealizarTarefas = function (obj) {
         var idCliente = $(obj).attr("data-idCliente");
         var idFornecedor = $(obj).attr("data-idFornecedor");
-        $("#modal").load("/Tarefas/RealizarTarefas?idCliente=" + idCliente + "&idFornecedor=" + idFornecedor, function () {
+        var urlRealizarTarefas = $(obj).attr("data-urlRealizarTarefas");
+        $("#modal").load(urlRealizarTarefas, function () {
             $("#modal").modal({ backdrop: 'static', keyboard: false });
             tarefas.inicializaDatePicker();
         })
@@ -106,6 +107,11 @@ var Tarefas = function () {
     this.SalvarHistorico = function (obj) {
         var isValid = true;
 
+        if ($("[name=DataContato]").val() == "") {
+            $("[name=DataContato]").addClass("has-error");
+            isValid = false;
+        }
+
         if ($("[name=Descricao]").val() == "") {
             $("[name=Descricao]").addClass("has-error");
             isValid = false;
@@ -171,10 +177,12 @@ var Tarefas = function () {
     this.AlterarFornecedor = function (obj) {
         var urlDetalhe = $(obj).attr("data-url");
         var panelBody = $("#modal");
+        
+        var urlAction = $("#urlRecuperarDetalhes").val();
 
         $.ajax({
             type: 'GET',
-            url: "/Tarefas/RecuperarDetalhes/",
+            url: urlAction,
             data: { "idCliente": $("[name = IdCliente]").val(), "idFornecedor": $("[name = IdFornecedor]").val() },
             success: function (partialHtml) {
                 panelBody.html(partialHtml);
@@ -193,10 +201,12 @@ var Tarefas = function () {
         idClienteSelecionado = idClienteSelecionado == "" ? 0 : idClienteSelecionado;
         var idVendedorSelecionado = $('#idVendedorSelecionado').val();
         idVendedorSelecionado = idVendedorSelecionado ? idVendedorSelecionado : 0;
+        
+        var urlAction = $("#urlReloadTarefas").val();
 
         $.ajax({
             type: 'GET',
-            url: "/Tarefas/ReloadTarefas/",
+            url: urlAction,
             data: {
                 "idClienteSelecionado": idClienteSelecionado, "idVendedorSelecionado": idVendedorSelecionado
             },

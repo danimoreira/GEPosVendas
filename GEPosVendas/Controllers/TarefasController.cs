@@ -107,7 +107,8 @@ namespace GEPosVendas.Controllers
         [HttpPost]
         public ViewResult Salvar(Contatos contato, int? idClienteSelecionado, int? idVendedorSelecionado)
         {
-            contato.DataContato = DateTime.Now;
+            if (contato.DataContato.Equals(DateTime.MinValue))
+                contato.DataContato = DateTime.Now;
 
             this.UpdateBag();
             
